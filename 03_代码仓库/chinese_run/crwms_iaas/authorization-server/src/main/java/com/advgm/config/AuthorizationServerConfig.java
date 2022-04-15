@@ -1,9 +1,9 @@
 package com.advgm.config;
 
 
-import jdk.nashorn.internal.parser.TokenStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,8 +12,10 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 @EnableAuthorizationServer
@@ -49,8 +51,23 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)
-                        .tokenStore(redisTokenStore());
+                        .tokenStore(jwtTokenStore())
+                .tokenEnhancer(jwtAccessTokenConverter());
         super.configure(endpoints);
+    }
+    private TokenStore jwtTokenStore() {
+        JwtTokenStore jwtTokenStore = new JwtTokenStore(jwtAccessTokenConverter());
+        return jwtTokenStore;
+    }
+
+    public JwtAccessTokenConverter jwtAccessTokenConverter() {
+        JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
+
+        // 加载我们的私钥
+        ClassPathResource classPathResource = new ClassPathResource("chinese_run.jks");
+        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(classPathResource, "coinexchange".toCharArray());
+        tokenConverter.setKeyPair(keyStoreKeyFactory.getKeyPair("coinexchange", "coinexchange".toCharArray()));
+        return tokenConverter;
     }
 
     public TokenStore redisTokenStore(){
