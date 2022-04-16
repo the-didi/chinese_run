@@ -4,7 +4,6 @@ package com.advgm.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,7 +29,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private UserDetailsService userDetailsService;
 
-    private RedisConnectionFactory redisConnectionFactory;
 
     /**
      * 加载第三方客户端
@@ -70,7 +68,4 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return tokenConverter;
     }
 
-    public TokenStore redisTokenStore(){
-        return new RedisTokenStore(redisConnectionFactory);
-    }
 }

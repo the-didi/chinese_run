@@ -11,8 +11,6 @@ import java.security.Principal;
 public class UserInfoController {
     @GetMapping("/user/Info")
     public Principal userInfo(Principal principal){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
         return principal;
     }
 }
