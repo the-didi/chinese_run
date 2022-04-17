@@ -65,7 +65,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
         String s = null;
         try {
-            ClassPathResource classPathResource = new ClassPathResource("coinexchange.txt");
+            ClassPathResource classPathResource = new ClassPathResource("chinese_run.txt");
             byte[] bytes = FileCopyUtils.copyToByteArray(classPathResource.getInputStream());
             s = new String(bytes, "UTF-8");
         } catch (Exception e) {

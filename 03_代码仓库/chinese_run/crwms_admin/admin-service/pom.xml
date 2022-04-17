@@ -27,6 +27,25 @@
             <artifactId>crwms_common</artifactId>
             <version>0.0.1</version>
         </dependency>
+        <!--           阿里云对象存储-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alicloud-oss</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.advgm</groupId>
+            <artifactId>tenant-api</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <!--mapStruct依赖 高性能对象映射-->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: admin-service
+  cloud:  # nacos地址
+    nacos:
+      server-addr: nacos-server:8848
+      config:
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: sentinel-dashboard:8858
+    alicloud:
+      access-key: LTAI5tHUJajkuxNfu3ZpBD7M
+      secret-key: KitWEVnsK8hHjYkKMxbCzAGdaKaiZF
+      oss:
+        endpoint: oss-cn-beijing.aliyuncs.com
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql-server:3306/cr_wms?serverTimezone=UTC
+    username: root
+    password: 123456
+  profiles:
+    active: dev
+
+# 拉取的配置文件的dataID =  admin-service-dev.yaml
