@@ -2,6 +2,7 @@ package com.advgm.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,44 +16,59 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
-@EnableAuthorizationServer
+@EnableAuthorizationServer // 开启授权服务器的功能
 @Configuration
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Qualifier("userServiceDetailsServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
 
+//    @Autowired
+//    private RedisConnectionFactory redisConnectionFactory ;
 
     /**
-     * 加载第三方客户端
+     * 添加第三方的客户端
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("")//第三方客户端的名称
-                        .secret(passwordEncoder.encode("cr-secret"))//第三方客户端的密钥
-                                .scopes("all")//第三方客户端的授权范围
-                .accessTokenValiditySeconds(3600)//token的有效期
-                        .refreshTokenValiditySeconds(7*3600);//重新刷新token的时间
-
+                .withClient("coin-api") // 第三方客户端的名称
+                .secret(passwordEncoder.encode("coin-secret")) //  第三方客户端的密钥
+                .scopes("all") //第三方客户端的授权范围
+                .authorizedGrantTypes("password","refresh_token")
+                .accessTokenValiditySeconds(7 * 24 *3600) // token的有效期
+                .refreshTokenValiditySeconds(30 * 24 * 3600)// refresh_token的有效期
+                .and()
+                .withClient("inside-app")
+                .secret(passwordEncoder.encode("inside-secret"))
+                .authorizedGrantTypes("client_credentials")
+                .scopes("all")
+                .accessTokenValiditySeconds(7 * 24 *3600)
+        ;
         super.configure(clients);
     }
 
+    /**
+     * 配置验证管理器，UserdetailService
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(authenticationManager)
                 .userDetailsService(userDetailsService)
-                        .tokenStore(jwtTokenStore())
+                .tokenStore(jwtTokenStore())// tokenStore 来存储我们的token jwt 存储token
                 .tokenEnhancer(jwtAccessTokenConverter());
+
         super.configure(endpoints);
     }
+
     private TokenStore jwtTokenStore() {
         JwtTokenStore jwtTokenStore = new JwtTokenStore(jwtAccessTokenConverter());
         return jwtTokenStore;
@@ -62,7 +78,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         JwtAccessTokenConverter tokenConverter = new JwtAccessTokenConverter();
 
         // 加载我们的私钥
-        ClassPathResource classPathResource = new ClassPathResource("chinese_run.jks");
+        ClassPathResource classPathResource = new ClassPathResource("coinexchange.jks");
         KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(classPathResource, "coinexchange".toCharArray());
         tokenConverter.setKeyPair(keyStoreKeyFactory.getKeyPair("coinexchange", "coinexchange".toCharArray()));
         return tokenConverter;

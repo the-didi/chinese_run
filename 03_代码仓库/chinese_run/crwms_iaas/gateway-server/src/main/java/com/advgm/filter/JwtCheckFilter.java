@@ -28,7 +28,7 @@ public class JwtCheckFilter implements GlobalFilter, Ordered {
     @Value("${no.require.urls:/admin/login,/user/gt/register,/user/login,/user/users/register,/user/sms/sendTo,/user/users/setPassword}")
     private Set<String> noRequireTokenUris ;
     /**
-     * 拦截下来之后做什么
+     * 过滤器拦截到用户的请求后做啥
      * @param exchange
      * @param chain
      * @return
@@ -88,11 +88,9 @@ public class JwtCheckFilter implements GlobalFilter, Ordered {
         if(noRequireTokenUris.contains(path)){
             return false ; // 不需要token
         }
-        if(path.contains("/kline/")){
-            return false ;
-        }
         return Boolean.TRUE ;
     }
+
 
     /**
      * 拦截器的顺序

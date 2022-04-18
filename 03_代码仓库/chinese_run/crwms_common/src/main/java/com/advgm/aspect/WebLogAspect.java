@@ -82,7 +82,7 @@ public class WebLogAspect {
         // 获取ApiOperation
         ApiOperation annotation = method.getAnnotation(ApiOperation.class);
         webLog.setDescription(annotation==null ? "no desc":annotation.value());
-        webLog.setMethod(targetClassName+"."+method.getName()); // com.bjsxt.controller.UserController.login()
+        webLog.setMethod(targetClassName+"."+method.getName()); // com.advgm.controller.UserController.login()
         webLog.setParameter(getMethodParameter(method,proceedingJoinPoint.getArgs())); //{"key_参数的名称":"value_参数的值"}
         webLog.setResult(result);
         log.info(JSON.toJSONString(webLog,true));
