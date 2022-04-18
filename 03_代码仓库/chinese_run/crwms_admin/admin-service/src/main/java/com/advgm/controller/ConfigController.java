@@ -16,7 +16,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping("/configs")
-@Api(tags = "后台参数配置")
+@Api(tags = "打印数据配置")
 public class ConfigController {
     @Autowired
     private ConfigService configService;
