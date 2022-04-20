@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+  <script crossorigin="anonymous" integrity="sha384-EGVQdWRqC20gAE+OsXRRYRuVVu+XaGzz6pJQNvD9yh3J73bmBl45ucwb37yOp9xN"
+    src="https://lib.baomitu.com/three.js/63/three.js"></script>
+  <script crossorigin="anonymous"
+    integrity="sha512-LDLGJ6FCTB3cSU6TwQhQHT4n1Sje3K1fXCesgME845YTEKNGfQaEnPcLNIqNJ6E3ua65VCL9CVVBdr9G+E7cnw=="
+    src="https://lib.baomitu.com/pixi.js/6.2.2/browser/pixi.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-aLVXf1JQal9NaRqd8dmMI3pnJjkqUkg+8M6VyWU1zVwXMWa/xebW4gKf1RHvzV5s"
+    src="https://lib.baomitu.com/anima/0.4.0/anima.js"></script>
+</head>
+
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.ts"></script>
+  <script>
+    const sign_in_btn = document.getElementById("sign-in-btn");
+    const sign_up_btn = document.getElementById("sign-up-btn");
+    const container = document.querySelector(".container");
+    sign_up_btn.addEventListener("click", () => {
+      container.classList.add("sign-up-mode");
+    });
+    sign_in_btn.addEventListener("click", () => {
+      container.classList.remove("sign-up-mode");
+    });
+  </script>
+</body>
+
 </html>

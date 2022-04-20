@@ -2,6 +2,6 @@
 </script>
 
 <template>
-你好世界
+    <router-view />
 </template>
 
