@@ -13,8 +13,8 @@ const service = axios.create({
 service.interceptors.request.use(
 	(config) => {
 		// 在发送请求之前做些什么 token
-		if (Session.get('token')) {
-			config.headers.common['token'] = `${Session.get('token')}`;
+		if (Session.get('Authorization')) {
+			config.headers['Authorization'] = `${Session.get('Authorization')}`;
 		}
 		return config;
 	},

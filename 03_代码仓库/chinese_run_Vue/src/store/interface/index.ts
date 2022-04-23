@@ -75,6 +75,7 @@ export interface TagsViewRoutesState {
 // 用户信息
 export interface UserInfosState {
 	userInfos: object;
+	menuList: object;
 }
 
 // 后端返回原始路由(未处理时)
@@ -90,4 +91,5 @@ export interface RootStateTypes {
 	tagsViewRoutes: TagsViewRoutesState;
 	userInfos: UserInfosState;
 	requestOldRoutes: RequestOldRoutesState;
+	menuList: object
 }

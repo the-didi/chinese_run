@@ -6,11 +6,11 @@
 					<h2 class="title">华润物流科技</h2>
 					<div class="input-field">
 						<i class="fas fa-user"></i>
-						<input type="text" placeholder="Username" />
+						<input type="text" v-model="loginForm.username" placeholder="Username" />
 					</div>
 					<div class="input-field">
 						<i class="fas fa-lock"></i>
-						<input type="password" placeholder="Password" />
+						<input type="password" v-model="loginForm.password" placeholder="Password" />
 					</div>
 					<input type="submit" value="登录" @click="handleLogin" class="btn solid" />
 				</form>
@@ -52,18 +52,40 @@
 	</div>
 </template>
 <script>
-import { defineComponent } from 'vue'
-import router from '/@/router/index'
+import { defineComponent, reactive, toRefs } from 'vue';
+import router from '/@/router/index';
+import { useStore } from '/@/store/index';
+import { Session } from '/@/utils/storage';
+import { login,getUserInfo} from '/@/api/login/index';
 export default defineComponent({
-    setup() {
-        const handleLogin=()=>{
-            router.push("/")
-        }
-        return {
-            handleLogin
-        }
-    },
-})
+	setup() {
+		const store = useStore();
+		const state = reactive({
+			loginForm: {
+				username: '',
+				password: '',
+			},
+		});
+		// 控制登录
+		const handleLogin =async () => {
+			// 首先走登录保存token
+			store.dispatch('userInfos/userLogin',state.loginForm)
+			// token保存完毕之后加载用户信息
+			const userInfo=await getUserInfo({username:state.loginForm.username})
+			// 用户信息得到保存
+			store.dispatch('userInfos/setUserInfos',userInfo.data)
+			signInSuccess()
+		};
+		// 登录成功的处理路由
+		const signInSuccess = (res) => {
+			router.push("/")
+		};
+		return {
+			handleLogin,
+			...toRefs(state),
+		};
+	},
+});
 </script>
 
 <style lang="scss" scoped>

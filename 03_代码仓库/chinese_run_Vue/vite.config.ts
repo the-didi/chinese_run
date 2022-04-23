@@ -24,7 +24,7 @@ const viteConfig: UserConfig = {
 		open: VITE_OPEN,
 		proxy: {
 			'/FPA': {
-				target: 'http://api-test.freeprogramming.cn/',
+				target: 'http://localhost/',
 				ws: true,
 				changeOrigin: true,
 				rewrite: (path) => path.replace(/^\/FPA/, ''),

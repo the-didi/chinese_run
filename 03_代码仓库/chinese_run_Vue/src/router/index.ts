@@ -28,14 +28,13 @@ router.beforeEach(async (to, from, next) => {
 		next();
 		NProgress.done();
 	} else {
-		//如果没有token 那么就跳转登录页面
-		// if (!token) {
-		// 	next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
-		// 	Session.clear();
-		// 	NProgress.done();
-		// } else {
-		// 		next();
-		// 	}
+		if (!token) {
+			// next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
+			// Session.clear();
+			NProgress.done();
+		} else {
+				next();
+			}
 		next()
 		NProgress.done();
 	}

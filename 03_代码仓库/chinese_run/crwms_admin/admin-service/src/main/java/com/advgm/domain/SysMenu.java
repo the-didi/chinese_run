@@ -65,6 +65,8 @@ public class SysMenu {
     @ApiModelProperty(value="描述")
     private String desc;
 
+
+
     /**
      * 目标地址
      */

@@ -43,7 +43,17 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 		component: ()=>import('/@/views/home/index.vue'),
 		meta: {
 			title: '首页'
-		}
+		},
+		children: [
+			{
+				path: '/demo',
+				name: 'Demo',
+				component: ()=>import('/@/views/demo/index.vue'),
+				meta: {
+					title: '样例'
+				}
+			}
+		]
 	}
 
 ]

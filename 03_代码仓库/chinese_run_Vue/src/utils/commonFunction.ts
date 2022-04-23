@@ -1,8 +1,8 @@
 // 通用函数
 import useClipboard from 'vue-clipboard3';
-import { ElMessage } from 'element-plus';
 import { formatDate } from '/@/utils/formatTime';
 import { useI18n } from 'vue-i18n';
+import { message } from 'ant-design-vue';
 
 export default function () {
 	const { t } = useI18n();
@@ -44,11 +44,11 @@ export default function () {
 				//复制
 				toClipboard(text);
 				//下面可以设置复制成功的提示框等操作
-				ElMessage.success(t('message.layout.copyTextSuccess'));
+				message.success(t('message.layout.copyTextSuccess'));
 				resolve(text);
 			} catch (e) {
 				//复制失败
-				ElMessage.error(t('message.layout.copyTextError'));
+				message.error(t('message.layout.copyTextError'));
 				reject(e);
 			}
 		});
