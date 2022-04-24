@@ -7,5 +7,8 @@ import { store, key } from './store';
 import mitt from 'mitt';
 import screenShort from 'vue-web-screen-shot';
 import '/@/theme/index.scss';
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
 createApp(App).use(router)
-.use(store, key).use(screenShort, { enableWebRtc: false }).use(Antd).mount('#app')
+.use(store, key).use(VXETable).use(screenShort, { enableWebRtc: false }).use(Antd).mount('#app')

@@ -3,6 +3,7 @@ import { Session } from '/@/utils/storage';
 import {login} from '/@/api/login/index'
 // 此处加上 `.ts` 后缀报错，具体原因不详
 import { UserInfosState, RootStateTypes } from '/@/store/interface/index';
+import { element } from 'screenfull';
 
 const userInfosModule: Module<UserInfosState, RootStateTypes> = {
 	namespaced: true,
@@ -39,12 +40,13 @@ const userInfosModule: Module<UserInfosState, RootStateTypes> = {
 			let menus=res.menus
 			// 设置菜单信息
 			commit('setMenuList',menus)
-			console.log(arrayToTree(menus))
-			Session.set('MenuList',menus)
+			console.log("开始执行转化函数")
+			Session.set('MenuList',arrayToTree(menus))
 		}
 	},
 };
 function arrayToTree(menuList:any){
+	
 	let parentList=[]
 	menuList.forEach(element => {
 		if(element.parentId==null){
@@ -53,11 +55,11 @@ function arrayToTree(menuList:any){
 	});
 	menuList.forEach(element=>{
 		if(element.parentId!=null){
-			let tmp=parentList.find(e=>e.id==element.parentId)
-			if(tmp.childs===null){
-				tmp.childs=[]
+			for(let item of parentList){
+				if(element.parentId==item.id){
+					item.childs.push(element)
+				}
 			}
-			tmp.childs.push(element)
 		}
 	})
 	return parentList

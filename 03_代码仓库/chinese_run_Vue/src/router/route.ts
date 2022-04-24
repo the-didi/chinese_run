@@ -44,7 +44,24 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 		meta: {
 			title: '首页'
 		},
+		redirect: '/index',
 		children: [
+			{
+				path: '/index',
+				name: 'Index',
+				component:()=>import('/@/views/index/index.vue'),
+				meta: {
+					title: '大盘数据'
+				}
+			},
+			{
+				path: '/menu',
+				name: 'Menu',
+				component: ()=>import('/@/views/system/menu/index.vue'),
+				meta: {
+					title: '菜单管理'
+				}
+			},
 			{
 				path: '/demo',
 				name: 'Demo',

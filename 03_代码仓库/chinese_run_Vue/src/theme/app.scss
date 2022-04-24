@@ -40,13 +40,18 @@ body,
 // 单文件组件样式
 .activity-container {
 	height: 100%;
-	align-items: center;
 	display: flex;
 	position: relative;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	background: #fff;
+}
+// 按钮组模块样式抽离
+.btn-group{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 /* 样式抽离结束 */
