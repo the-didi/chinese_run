@@ -70,5 +70,11 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         return sysMenuMapper.update(sysMenu,null);
     }
 
+    @Override
+    public boolean deleteMenuByIds(List<Long> ids) {
+        int i = sysMenuMapper.deleteBatchIds(ids);
+        return i!=0;
+    }
+
 
 }

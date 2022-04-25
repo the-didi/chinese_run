@@ -39,7 +39,7 @@ body,
 /* 复用样式于此处进行抽离 */
 // 单文件组件样式
 .activity-container {
-	height: 100%;
+	min-height: 100vh;
 	display: flex;
 	position: relative;
 	flex-direction: column;

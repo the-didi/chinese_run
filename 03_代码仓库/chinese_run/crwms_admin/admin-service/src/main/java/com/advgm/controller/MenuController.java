@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/menus")
 @Api(tags = "菜单的管理")
@@ -44,6 +46,21 @@ public class MenuController {
             return R.fail("删除失败");
         }
     }
+
+    @DeleteMapping("/batchDel")
+    @ApiOperation(value="菜单批量删除")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name="menuIds",value = "菜单ID集合的json")
+    })
+    public R<String> deleteMenuByIds(@RequestBody List<Long> ids){
+        boolean del=sysMenuService.deleteMenuByIds(ids);
+        if(del){
+            return R.ok("批量删除成功");
+        }else{
+            return R.fail("批量删除失败");
+        }
+    }
+
     @PostMapping("/add")
     @ApiOperation(value = "菜单的新增")
     @ApiImplicitParams({
@@ -70,7 +87,5 @@ public class MenuController {
         }else {
             return R.fail("修改菜单失败");
         }
-
-
     }
 }

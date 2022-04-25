@@ -16,9 +16,7 @@
 				<router-view />
 			</section>
 		</section>
-		<section class="app-desc">
-			<BottomInfo />
-		</section>
+
 		<!-- 头部栏开始 -->
 		<!-- 头部栏结束 -->
 		<!-- 页面栏开始 -->
@@ -27,6 +25,12 @@
 		<!-- 公司介绍栏介绍s -->
 		<!-- 主体内容结束 -->
 	</main>
+	<a-affix :offset-bottom="0">
+		<section class="app-desc">
+		<BottomInfo />
+	</section>
+	</a-affix>	
+	
 </template>
 <script>
 import { defineComponent, reactive, toRefs } from 'vue';
@@ -57,34 +61,37 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .app-container {
-	min-height: 100%;
+	min-height: 100vh;
 	display: flex;
 	flex-direction: row;
 	.app-sidebar {
 		background: rgb(255, 255, 255);
 		max-width: 14vw;
-		height: 100vh;
+		height: inherit;
 	}
-	.app-nav {
-		background: rgb(255, 255, 255);
-	}
+
 	.app-body {
 		flex: 1;
+		height: inherit;
 		.app-header {
 			min-width: 86vw;
 			height: 7vh;
 		}
-		.app-content{
-			height: 80vh;
+		.app-nav {
+			height: 7vh;
+			background: rgb(255, 255, 255);
+		}
+		.app-content {
+			min-height: 80vh;
 			box-sizing: border-box;
 			padding: 10px;
 		}
 	}
-	.app-desc {
+	
+}
+.app-desc {
+		border-top: 1px solid #DCDFE6;
 		width: 100vw;
-		position: absolute;
-		bottom: 0;
 		background: rgb(255, 255, 255);
 	}
-}
 </style>

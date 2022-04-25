@@ -1,16 +1,37 @@
 import request from '/@/utils/request'
-import { Session } from '/@/utils/storage'
-export function getByPage(params:object){
+// 分页
+export function findByPage(params:object){
     return request({
-        url: '/admin/login',
-        method: 'post',
+        url: '/admin/menus',
+        method: 'get',
         params: params
     })
 }
-export function getUserInfo(params: object){
+export function deleteMenuById(params:object){
     return request({
-        url: '/admin/info',
-        method: 'get',
+        url: '/admin/menus/del',
+        method: 'delete',
         params: params
+    })
+}
+export function addMenu(params:object){
+    return request({
+        url: '/admin/menus/add',
+        method: 'post',
+        data: params
+    })
+}
+export function updateMenu(params:object){
+    return request({
+        url: '/admin/menus/update',
+        method: 'put',
+        data: params
+    })
+}
+export function deleteByIds(params:object){
+    return request({
+        url:'/admin/menus/batchDel',
+        method: 'delete',
+        data: params
     })
 }
