@@ -37,45 +37,34 @@ public class MenuController {
             @ApiImplicitParam(name="menuId",value = "菜单id")
     })
     public R<String> deleteMenuById(long menuId){
-        if(sysMenuService.deleteMenuById(menuId)==1)
-        return R.ok();
-        return R.fail();
+        int i = sysMenuService.deleteMenuById(menuId);
+        if(i==1){
+            return R.ok("删除成功");
+        }else{
+            return R.fail("删除失败");
+        }
     }
     @PostMapping("/add")
     @ApiOperation(value = "菜单的新增")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name="parentId",value = "上级菜单ID"),
-            @ApiImplicitParam(name="parentKey",value = "上级菜单唯一KEY值"),
-            @ApiImplicitParam(name = "type",value = "类型 1-分类 2-节点"),
-            @ApiImplicitParam(name="name",value = "名称"),
-            @ApiImplicitParam(name="desc",value = "描述"),
-            @ApiImplicitParam(name="targetUrl",value = "目标地址"),
-            @ApiImplicitParam(name="sort",value = "排序索引"),
-            @ApiImplicitParam(name="status",value = "状态 0-无效； 1-有效；"),
-            @ApiImplicitParam(name="createBy",value = "创建人"),
-            @ApiImplicitParam(name="modifyBy",value = "修改人")
-    })
-    public R<String> addMenu(
-            Long parentId,
-            String parentKey,
-            Byte type,
-            String name,
-            String desc,
-            String targetUrl,
-            Integer sort,
-            Byte status,
-            Long createBy,
-            Long modifyBy
+    public R<String> addMenu(@RequestBody SysMenu sysMenu){
+        boolean save = sysMenuService.save(sysMenu);
+        if(save){
+            return R.ok("新增成功");
+        }else{
+            return R.ok("新增失败");
+        }
 
-    ){
-        SysMenu sysMenu = new SysMenu(parentId, parentKey, type, name, desc, targetUrl, sort, status, createBy, modifyBy);
-        if(sysMenuService.addMenu(sysMenu)==1)
-        return R.ok();
-        return R.fail();
     }
     @PutMapping("/update")
     @ApiOperation(value = "菜单的修改")
-    public R<Integer> updateMenu(@RequestBody SysMenu sysMenu){
-        return R.ok(sysMenuService.updateMenu(sysMenu));
+    public R<String> updateMenu(@RequestBody SysMenu sysMenu){
+        boolean update = sysMenuService.updateById(sysMenu);
+        if(update){
+            return R.ok("修改菜单成功");
+        }else {
+            return R.fail("修改菜单失败");
+        }
+
+
     }
 }
