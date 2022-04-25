@@ -78,6 +78,7 @@ export default defineComponent({
 		};
 		// 登录成功的处理路由
 		const signInSuccess = (res) => {
+			
 			router.push("/")
 		};
 		return {

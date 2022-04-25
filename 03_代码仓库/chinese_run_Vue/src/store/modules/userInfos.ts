@@ -37,16 +37,12 @@ const userInfosModule: Module<UserInfosState, RootStateTypes> = {
 			const res=await login(data)
 			// 获取token之后获取登录用户信息
 			Session.set('Authorization',res.token)
-			let menus=res.menus
-			// 设置菜单信息
-			commit('setMenuList',menus)
-			console.log("开始执行转化函数")
-			Session.set('MenuList',arrayToTree(menus))
+			Session.set('MenuList',arrayToTree(res.menus))
 		}
 	},
 };
 function arrayToTree(menuList:any){
-	
+	console.log(menuList)
 	let parentList=[]
 	menuList.forEach(element => {
 		if(element.parentId==null){
