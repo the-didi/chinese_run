@@ -20,4 +20,20 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
      * @return
      */
     List<SysMenu> selectMenusByRoleId(Long roleId);
+
+    /**
+     *通过菜单id删除菜单
+     * @param menuId
+     * @return
+     */
+    int deleteMenuById(Long menuId);
+
+    /**
+     * 菜单的新增
+     * @param sysMenu
+     * @return
+     */
+    int addMenu(SysMenu sysMenu);
+
+
 }

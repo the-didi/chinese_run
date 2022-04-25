@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -16,7 +17,18 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="admin-api" target="8" />
+      <module name="admin-service" target="8" />
+      <module name="authorization-server" target="8" />
+      <module name="chinese_run" target="1.8" />
+      <module name="crwms_admin" target="8" />
+      <module name="crwms_common" target="8" />
+      <module name="crwms_iaas" target="8" />
+      <module name="crwms_tenant" target="8" />
+      <module name="gateway-server" target="8" />
       <module name="gateway-service" target="8" />
+      <module name="tenant-api" target="8" />
+      <module name="tenant-service" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

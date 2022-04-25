@@ -17,4 +17,7 @@ public interface SysMenuService extends IService<SysMenu>{
     List<SysMenu> getMenusByUserId(Long userId);
 
     Page<SysMenu> findByPage(Page<SysMenu> page, String name);
+    int deleteMenuById(Long menuId);
+    int addMenu(SysMenu sysMenu);
+    int updateMenu(SysMenu sysMenu);
 }

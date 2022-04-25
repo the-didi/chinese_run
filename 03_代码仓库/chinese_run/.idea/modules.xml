@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/crwms_admin/admin-api/admin-api.iml" filepath="$PROJECT_DIR$/crwms_admin/admin-api/admin-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_admin/admin-service/admin-service.iml" filepath="$PROJECT_DIR$/crwms_admin/admin-service/admin-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_iaas/authorization-server/authorization-server.iml" filepath="$PROJECT_DIR$/crwms_iaas/authorization-server/authorization-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/chinese_run.iml" filepath="$PROJECT_DIR$/.idea/chinese_run.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_admin/crwms_admin.iml" filepath="$PROJECT_DIR$/crwms_admin/crwms_admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_common/crwms_common.iml" filepath="$PROJECT_DIR$/crwms_common/crwms_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_iaas/crwms_iaas.iml" filepath="$PROJECT_DIR$/crwms_iaas/crwms_iaas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_tenant/crwms_tenant.iml" filepath="$PROJECT_DIR$/crwms_tenant/crwms_tenant.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_iaas/gateway-server/gateway-server.iml" filepath="$PROJECT_DIR$/crwms_iaas/gateway-server/gateway-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_tenant/tenant-api/tenant-api.iml" filepath="$PROJECT_DIR$/crwms_tenant/tenant-api/tenant-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/crwms_tenant/tenant-service/tenant-service.iml" filepath="$PROJECT_DIR$/crwms_tenant/tenant-service/tenant-service.iml" />
+    </modules>
+  </component>
+</project>

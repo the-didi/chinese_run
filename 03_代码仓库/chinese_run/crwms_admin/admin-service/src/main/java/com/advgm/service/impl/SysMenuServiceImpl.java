@@ -55,6 +55,20 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         ));
     }
 
+    @Override
+    public int deleteMenuById(Long menuId) {
+        return sysMenuMapper.deleteMenuById(menuId);
+    }
+
+    @Override
+    public int addMenu(SysMenu sysMenu) {
+        return sysMenuMapper.addMenu(sysMenu);
+    }
+
+    @Override
+    public int updateMenu(SysMenu sysMenu) {
+        return sysMenuMapper.update(sysMenu,null);
+    }
 
 
 }
