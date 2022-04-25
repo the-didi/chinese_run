@@ -46,6 +46,9 @@ public class MenuController {
     }
     @PostMapping("/add")
     @ApiOperation(value = "菜单的新增")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "sysMenu",value = "sysMenu 的json数据")
+    })
     public R<String> addMenu(@RequestBody SysMenu sysMenu){
         boolean save = sysMenuService.save(sysMenu);
         if(save){
@@ -57,6 +60,9 @@ public class MenuController {
     }
     @PutMapping("/update")
     @ApiOperation(value = "菜单的修改")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "sysMenu",value = "sysMenu 的json数据")
+    })
     public R<String> updateMenu(@RequestBody SysMenu sysMenu){
         boolean update = sysMenuService.updateById(sysMenu);
         if(update){

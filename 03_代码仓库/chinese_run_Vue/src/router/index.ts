@@ -23,18 +23,19 @@ router.beforeEach(async (to, from, next) => {
 	NProgress.configure({ showSpinner: false });
 	if (to.meta.title) NProgress.start();
 	NextLoading.start()
-	const token = Session.get('token');
+	const token = Session.get('Authorization');
 	if (to.path === '/login' && !token) {
 		next();
 		NProgress.done();
 	} else {
+		console.log("此处是路由守卫",token)
 		if (!token) {
-			// next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
-			// Session.clear();
+			next(`/login`);
+			Session.clear();
 			NProgress.done();
 		} else {
-				next();
-			}
+			next();
+		}
 		next()
 		NProgress.done();
 	}

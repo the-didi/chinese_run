@@ -42,7 +42,7 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 		name: 'home',
 		component: ()=>import('/@/views/home/index.vue'),
 		meta: {
-			title: '首页'
+			title: '大盘数据'
 		},
 		redirect: '/index',
 		children: [

@@ -56,7 +56,7 @@ import { defineComponent, reactive, toRefs } from 'vue';
 import router from '/@/router/index';
 import { useStore } from '/@/store/index';
 import { Session } from '/@/utils/storage';
-import { login,getUserInfo} from '/@/api/login/index';
+import { getUserInfo } from '/@/api/login/index';
 export default defineComponent({
 	setup() {
 		const store = useStore();
@@ -67,19 +67,26 @@ export default defineComponent({
 			},
 		});
 		// 控制登录
-		const handleLogin =async () => {
+		const handleLogin = async () => {
 			// 首先走登录保存token
-			store.dispatch('userInfos/userLogin',state.loginForm)
+			store.dispatch('userInfos/userLogin', state.loginForm);
 			// token保存完毕之后加载用户信息
-			const userInfo=await getUserInfo({username:state.loginForm.username})
+			const userInfo = await getUserInfo({ username: state.loginForm.username });
 			// 用户信息得到保存
-			store.dispatch('userInfos/setUserInfos',userInfo.data)
-			signInSuccess()
+			store.dispatch('userInfos/setUserInfos', userInfo.data);
+
+			signInSuccess();
 		};
 		// 登录成功的处理路由
 		const signInSuccess = (res) => {
-			
-			router.push("/")
+			Session.set('tabviews', [
+				{
+					title: '大盘数据',
+					content: 'index',
+					key: '/index',
+				},
+			]);
+			router.push('/');
 		};
 		return {
 			handleLogin,
