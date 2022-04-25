@@ -10,9 +10,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/menus")
@@ -33,7 +31,7 @@ public class MenuController {
         page.addOrder(OrderItem.desc("last_update_time"));
         return R.ok(sysMenuService.findByPage(page, name));
     }
-    @RequestMapping("/del")
+    @DeleteMapping("/del")
     @ApiOperation(value = "菜单的删除")
     @ApiImplicitParams({
             @ApiImplicitParam(name="menuId",value = "菜单id")
@@ -43,7 +41,7 @@ public class MenuController {
         return R.ok();
         return R.fail();
     }
-    @RequestMapping("/add")
+    @PostMapping("/add")
     @ApiOperation(value = "菜单的新增")
     @ApiImplicitParams({
             @ApiImplicitParam(name="parentId",value = "上级菜单ID"),
@@ -75,7 +73,7 @@ public class MenuController {
         return R.ok();
         return R.fail();
     }
-    @RequestMapping("/update")
+    @PutMapping("/update")
     @ApiOperation(value = "菜单的修改")
     @ApiImplicitParams({
             @ApiImplicitParam(name="id",value = "菜单id"),
