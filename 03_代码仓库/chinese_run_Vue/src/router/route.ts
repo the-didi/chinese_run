@@ -69,7 +69,15 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				meta: {
 					title: '样例'
 				}
-			}
+			},
+			{
+				path: '/role',
+				name: 'Role',
+				component: ()=>import('/@/views/system/role/index.vue'),
+				meta: {
+					title: '权限管理'
+				}
+			},
 		]
 	}
 

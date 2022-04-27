@@ -92,7 +92,7 @@
 import { defineComponent, onMounted, ref,reactive, toRefs } from 'vue';
 import { Icon } from '/@/utils/antdIcon';
 import { findByPage,deleteByIds } from '/@/api/system/menu';
-import { VXETable, VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
+import { VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
 import { message } from 'ant-design-vue';
 export default defineComponent({
 	components: {

@@ -31,27 +31,11 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent, onMounted, reactive, toRefs, watch } from 'vue';
-import {
-	MenuFoldOutlined,
-	MenuUnfoldOutlined,
-	PieChartOutlined,
-	MailOutlined,
-	DesktopOutlined,
-	InboxOutlined,
-	AppstoreOutlined,
-} from '@ant-design/icons-vue';
 import { Session } from '/@/utils/storage';
 import { Icon } from '/@/utils/antdIcon';
 import router from '/@/router/index'
 export default defineComponent({
 	components: {
-		MenuFoldOutlined,
-		MenuUnfoldOutlined,
-		PieChartOutlined,
-		MailOutlined,
-		DesktopOutlined,
-		InboxOutlined,
-		AppstoreOutlined,
 		Icon,
 	},
 	props: ['isOpen'],
@@ -76,6 +60,7 @@ export default defineComponent({
 			state.openKeys = state.collapsed ? [] : state.preOpenKeys;
 		};
 		const handleMenuChange = (e:any) => {
+			console.log(e)
 			router.push(e.targetUrl)
 		};
 		return {
