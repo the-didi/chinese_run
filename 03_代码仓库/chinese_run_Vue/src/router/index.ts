@@ -21,7 +21,7 @@ import { staticRoutes} from '/@/router/route';
 // 路由加载前
 router.beforeEach(async (to, from, next) => {
 	NProgress.configure({ showSpinner: false });
-	if (to.meta.title) NProgress.start();
+	if (to.meta.title==='/index') NProgress.start();
 	NextLoading.start()
 	const token = Session.get('Authorization');
 	if (to.path === '/login' && !token) {
