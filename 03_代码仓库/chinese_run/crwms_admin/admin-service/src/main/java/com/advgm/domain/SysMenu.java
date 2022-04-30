@@ -23,32 +23,6 @@ import java.util.List;
 @NoArgsConstructor
 @TableName(value = "sys_menu")
 public class SysMenu {
-    public SysMenu(Long parentId, String parentKey, Byte type, String name, String desc, String targetUrl, Integer sort, Byte status, Long createBy, Long modifyBy) {
-        this.parentId = parentId;
-        this.parentKey = parentKey;
-        this.type = type;
-        this.name = name;
-        this.desc = desc;
-        this.targetUrl = targetUrl;
-        this.sort = sort;
-        this.status = status;
-        this.createBy = createBy;
-        this.modifyBy = modifyBy;
-    }
-
-    public SysMenu(Long id, Long parentId, String parentKey, Byte type, String name, String desc, String targetUrl, Integer sort, Byte status, Long createBy, Long modifyBy) {
-        this.id = id;
-        this.parentId = parentId;
-        this.parentKey = parentKey;
-        this.type = type;
-        this.name = name;
-        this.desc = desc;
-        this.targetUrl = targetUrl;
-        this.sort = sort;
-        this.status = status;
-        this.createBy = createBy;
-        this.modifyBy = modifyBy;
-    }
 
     /**
      * 主键

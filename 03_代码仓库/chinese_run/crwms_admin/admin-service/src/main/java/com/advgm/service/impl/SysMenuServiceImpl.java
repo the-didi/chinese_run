@@ -1,6 +1,6 @@
 package com.advgm.service.impl;
 
-import com.advgm.domain.SysRole;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -57,17 +57,17 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public int deleteMenuById(Long menuId) {
-        return sysMenuMapper.deleteMenuById(menuId);
+        return sysMenuMapper.deleteById(menuId);
     }
 
     @Override
     public int addMenu(SysMenu sysMenu) {
-        return sysMenuMapper.addMenu(sysMenu);
+        return sysMenuMapper.insert(sysMenu);
     }
 
     @Override
     public int updateMenu(SysMenu sysMenu) {
-        return sysMenuMapper.update(sysMenu,null);
+        return sysMenuMapper.updateById(sysMenu);
     }
 
     @Override
