@@ -17,7 +17,7 @@ import java.util.Date;
  * @date 2022年04月30日 17:49
  */
 @ApiModel(value = "com-advgm-domain-goods")
-@TableName(value = "goods")
+@TableName(value = "cr_goods")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

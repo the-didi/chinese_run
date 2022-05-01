@@ -17,7 +17,7 @@ import java.util.Date;
  * @date 2022年04月30日 18:59
  */
 @ApiModel(value = "com-advgm-domain-order")
-@TableName(value = "order")
+@TableName(value = "cr_order")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

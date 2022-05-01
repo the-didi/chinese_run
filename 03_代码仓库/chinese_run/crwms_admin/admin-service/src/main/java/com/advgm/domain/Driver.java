@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
  * @date 2022年04月30日 17:49
  */
 @ApiModel(value = "com-advgm-domain-driver")
-@TableName(value = "driver")
+@TableName(value = "cr_driver")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

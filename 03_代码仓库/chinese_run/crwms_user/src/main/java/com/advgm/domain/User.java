@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
  * @date 2022年04月30日 18:59
  */
 @ApiModel("com-advgm-domain-user")
-@TableName(value = "user")
+@TableName(value = "cr_user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

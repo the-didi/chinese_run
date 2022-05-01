@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
  * @date 2022年04月30日 17:49
  */
 @ApiModel(value = "com-advgm-domain-wareHouse")
-@TableName(value = "warehouse")
+@TableName(value = "cr_warehouse")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

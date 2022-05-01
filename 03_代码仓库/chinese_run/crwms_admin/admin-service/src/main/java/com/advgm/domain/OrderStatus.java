@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
  * @date 2022年04月30日 17:50
  */
 @ApiModel(value = "com-advgm-domain-orderStatus")
-@TableName(value ="order_status" )
+@TableName(value ="cr_order_status" )
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
