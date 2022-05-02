@@ -33,11 +33,15 @@ public class UserServiceDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        // 获取请求参数
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        // 获取登录类型
         String loginType = requestAttributes.getRequest().getParameter("login_type"); // 区分时后台人员还是我们的用户登录
+        //如果登录类型为空就抛出异常
         if (StringUtils.isEmpty(loginType)) {
             throw new AuthenticationServiceException("登录类型不能为null");
         }
+        // 用户明细初始化为空
         UserDetails userDetails = null;
         try {
             String grantType = requestAttributes.getRequest().getParameter("grant_type"); // refresh_token 进行纠正

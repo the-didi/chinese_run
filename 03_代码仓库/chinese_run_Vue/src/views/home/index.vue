@@ -66,7 +66,7 @@ export default defineComponent({
 	flex-direction: row;
 	.app-sidebar {
 		background: rgb(255, 255, 255);
-		max-width: 14vw;
+		max-width: 20vw;
 		height: inherit;
 	}
 

@@ -10,7 +10,9 @@
         <module name="authorization-server" />
         <module name="tenant-api" />
         <module name="tenant-service" />
+        <module name="online-service" />
         <module name="admin-api" />
+        <module name="online-api" />
         <module name="gateway-server" />
         <module name="crwms_common" />
         <module name="admin-service" />
@@ -18,6 +20,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="gateway-service" target="8" />
+      <module name="online_api" target="8" />
+      <module name="online_service" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -26,7 +30,12 @@
       <module name="admin-service" options="-parameters" />
       <module name="authorization-server" options="-parameters" />
       <module name="crwms_common" options="-parameters" />
+      <module name="crwms_online" options="-parameters" />
       <module name="gateway-server" options="-parameters" />
+      <module name="online-api" options="-parameters" />
+      <module name="online-service" options="-parameters" />
+      <module name="online_api" options="-parameters" />
+      <module name="online_service" options="-parameters" />
       <module name="tenant-api" options="-parameters" />
       <module name="tenant-service" options="-parameters" />
     </option>

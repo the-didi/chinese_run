@@ -33,6 +33,17 @@ public class MenuController {
         page.addOrder(OrderItem.desc("last_update_time"));
         return R.ok(sysMenuService.findByPage(page, name));
     }
+
+    @GetMapping("/getById")
+    @ApiOperation(value="更具ID获取菜单信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id",value = "菜单ID")
+    })
+    public R<SysMenu> findById(Long id){
+        SysMenu byId = sysMenuService.getById(id);
+        return R.ok(byId);
+    }
+
     @DeleteMapping("/del")
     @ApiOperation(value = "菜单的删除")
     @ApiImplicitParams({

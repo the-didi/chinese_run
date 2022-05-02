@@ -12,7 +12,7 @@
 				<template #icon>
 					<Icon :icon="'AppstoreOutlined'" />
 				</template>
-				<span>{{ item.name }}</span>
+				<span v-show="!isOpen">{{ item.name }}</span>
 			</a-menu-item>
 			<a-sub-menu :key="item.id">
 				<template #icon>

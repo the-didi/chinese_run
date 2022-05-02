@@ -1,5 +1,5 @@
 <template>
-    <a-card hoverable class="activity-container">
+    <a-card class="activity-container">
         <!-- 查询部分开始 -->
         <div class="data-form">
 			<a-form name="menu_controllers" layout="inline" :model="roleController" @finish="onFinish">
@@ -67,6 +67,7 @@
 			<vxe-column title="操作">
 				<template #default="{ row }">
 					<a-button type="link" @click="handleEdit(row)">编辑</a-button>
+					
 					<a-button type="link" @click="handleDel(row)">删除</a-button>
 				</template>
 			</vxe-column>
@@ -83,6 +84,7 @@
 		>
 		</vxe-pager>
 		<!-- 分页模块结束 -->
+		<!-- 抽屉模块开始 -->
     </a-card>
 </template>
 <script lang="ts">

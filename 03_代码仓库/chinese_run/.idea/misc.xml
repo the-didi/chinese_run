@@ -11,6 +11,8 @@
       <set>
         <option value="$PROJECT_DIR$/admin-api/pom.xml" />
         <option value="$PROJECT_DIR$/crwms_iaas/gateway-service/pom.xml" />
+        <option value="$PROJECT_DIR$/crwms_online/online_api/pom.xml" />
+        <option value="$PROJECT_DIR$/crwms_online/online_service/pom.xml" />
         <option value="$PROJECT_DIR$/gateway-service/pom.xml" />
       </set>
     </option>

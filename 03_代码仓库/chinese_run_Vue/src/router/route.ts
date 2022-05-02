@@ -78,6 +78,22 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 					title: '权限管理'
 				}
 			},
+			{
+				path:'/user',
+				name: 'User',
+				component: ()=>import("/@/views/system/user/index.vue"),
+				meta:{
+					title: '用户管理'
+				}
+			},
+			{
+				path: '/online/cgform',
+				name: 'CgForm',
+				component: ()=>import("/@/views/online/cgform/index.vue"),
+				meta: {
+					title: '在线表单开发'
+				}
+			}
 		]
 	}
 
