@@ -26,14 +26,6 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
      * @param menuId
      * @return
      */
-    int deleteMenuById(Long menuId);
-
-    /**
-     * 菜单的新增
-     * @param sysMenu
-     * @return
-     */
-    int addMenu(SysMenu sysMenu);
 
 
 }

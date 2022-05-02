@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName(value = "web_config")
+@TableName(value = "cr_config")
 public class WebConfig {
     /**
      * Id
