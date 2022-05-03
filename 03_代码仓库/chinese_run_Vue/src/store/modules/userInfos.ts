@@ -38,6 +38,7 @@ const userInfosModule: Module<UserInfosState, RootStateTypes> = {
 			// 获取token之后获取登录用户信息
 			Session.set('Authorization',res.token)
 			Session.set('MenuList',arrayToTree(res.menus))
+			
 		}
 	},
 };
@@ -49,6 +50,8 @@ function arrayToTree(menuList:any){
 			parentList.push(element)
 		}
 	});
+	// 先设置父菜单列表到Session里面去
+	Session.set('ParentList',parentList)
 	menuList.forEach(element=>{
 		if(element.parentId!=null){
 			for(let item of parentList){

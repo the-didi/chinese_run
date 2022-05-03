@@ -60,7 +60,7 @@
 			</a-dropdown>
 			<!-- 用户中心结束 -->
 			<!-- 推出登录开始 -->
-			<a-button style="color: #fff" type="text">
+			<a-button style="color: #fff" @click="handleLogout" type="text">
 				<template #icon><LogoutOutlined /></template>
 				退出登录
 			</a-button>
@@ -81,6 +81,7 @@ import {
 } from '@ant-design/icons-vue';
 import { reactive, ref, toRefs } from '@vue/reactivity';
 import type { SelectProps } from 'ant-design-vue';
+import router from '../router';
 export default defineComponent({
 	components: {
 		MenuFoldOutlined,
@@ -116,10 +117,14 @@ export default defineComponent({
 		const handleQuestionDoc = () => {
 			window.open('http://www.freeprogramming.cn');
 		};
+		const handleLogout=()=>{
+			router.push("/login")
+		}
 		return {
 			handleQuestionDoc,
 			toggleCollapsed,
 			handleChange,
+			handleLogout,
 			options,
 			...toRefs(state),
 		};

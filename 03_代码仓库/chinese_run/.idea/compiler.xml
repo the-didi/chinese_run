@@ -7,8 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="authorization-server" />
         <module name="tenant-api" />
+        <module name="authorization-server" />
         <module name="tenant-service" />
         <module name="admin-api" />
         <module name="gateway-server" />
@@ -16,10 +16,6 @@
         <module name="admin-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="crwms_user" target="8" />
-      <module name="gateway-service" target="8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -27,7 +23,6 @@
       <module name="admin-service" options="-parameters" />
       <module name="authorization-server" options="-parameters" />
       <module name="crwms_common" options="-parameters" />
-      <module name="crwms_user" options="-parameters" />
       <module name="gateway-server" options="-parameters" />
       <module name="tenant-api" options="-parameters" />
       <module name="tenant-service" options="-parameters" />

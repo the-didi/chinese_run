@@ -1,10 +1,13 @@
 <template>
     <a-card class="activity-container">
-        <!-- 查询部分开始 -->
+        <!-- 控制查询模块开始 -->
         <div class="data-form">
-			<a-form name="menu_controllers" layout="inline" :model="roleController" @finish="onFinish">
-				<a-form-item name="roleName" label="角色名称">
-					<a-input v-model:value="roleController.name" allow-clear placeholder="输入角色名称查询" />
+			<a-form name="user_controllers" layout="inline" :model="userController" @finish="onFinish">
+				<a-form-item name="menuName" label="用户账号">
+					<a-input v-model:value="userController.username" allow-clear placeholder="输入用户账号查询" />
+				</a-form-item>
+                <a-form-item name="menuName" label="用户姓名">
+					<a-input v-model:value="userController.fullname" allow-clear placeholder="请输入用户姓名"></a-input>
 				</a-form-item>
 				<a-form-item>
 					<a-button type="primary" html-type="submit">
@@ -16,7 +19,7 @@
 				</a-form-item>
 			</a-form>
 		</div>
-        <!-- 查询部分结束 -->
+        <!-- 控制查询模块结束 -->
         <!-- 按钮组模块开始 -->
         <div class="btn-group">
 			<a-button type="primary" @click="handleAdd">
@@ -42,7 +45,7 @@
 			>
 			<a style="margin-left: 24px" @click="onClearSelected">清空</a>
 		</div>
-		<vxe-table 
+        <vxe-table 
 			border 
 			ref="mainTable" 
 			:row-config="{ keyField: 'id' }" 
@@ -56,15 +59,15 @@
 			>
 			<vxe-column type="seq" width="60" title="#"></vxe-column>
 			<vxe-column type="checkbox" width="60"></vxe-column>
-			<vxe-column field="name" title="角色名称"></vxe-column>
-            <vxe-column field="code" title="角色编码"></vxe-column>
-			<vxe-column field="description" title="角色描述"></vxe-column>
+			<vxe-column field="username" title="用户账号"></vxe-column>
+            <vxe-column field="mobile" show-overflow title="手机号"></vxe-column>
+			<vxe-column field="email" show-overflow title="邮箱"></vxe-column>
 			<vxe-column field="status" title="状态"></vxe-column>
 			<vxe-column field="createBy" show-overflow title="创建人"></vxe-column>
-			<vxe-column field="modifyBy" title="修改人"></vxe-column>
+			<vxe-column field="modifyBy" show-overflow title="修改人"></vxe-column>
 			<vxe-column field="created" show-overflow title="创建时间"></vxe-column>
 			<vxe-column field="lastUpdateTime" show-overflow title="修改时间"></vxe-column>
-			<vxe-column title="操作">
+			<vxe-column width="150px" title="操作">
 				<template #default="{ row }">
 					<a-button type="link" @click="handleEdit(row)">编辑</a-button>
 					
@@ -74,87 +77,69 @@
 		</vxe-table>
         <!-- 数据表格模块结束 -->
         <!-- 分页模块开始 -->
-		<vxe-pager
+        <vxe-pager
 			background
-			v-model:current-page="roleController.currentPage"
-			v-model:page-size="roleController.pageSize"
-			:total="roleController.totalResult"
+			v-model:current-page="userController.currentPage"
+			v-model:page-size="userController.pageSize"
+			:total="userController.totalResult"
 			@page-change="handlePageChange"
 			:layouts="['PrevJump', 'PrevPage', 'JumpNumber', 'NextPage', 'NextJump', 'Sizes', 'FullJump', 'Total']"
 		>
 		</vxe-pager>
-		<!-- 分页模块结束 -->
-		<!-- 抽屉模块开始 -->
+        <!-- 分页模块结束 -->
     </a-card>
 </template>
 <script lang="ts">
-import { defineComponent,reactive,toRefs,ref, onMounted } from 'vue'
-import { Icon } from '/@/utils/antdIcon';
+import { defineComponent, reactive,toRefs,ref, onMounted } from 'vue'
 import { VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
-import { findByPage } from '/@/api/system/role';
+import { Icon } from '/@/utils/antdIcon';
+import {findByPage} from '/@/api/system/user'
 export default defineComponent({
-    components:{
+    components: {
         Icon
     },
     setup() {
         const mainTable = ref({} as VxeTableInstance)
         const state=reactive({
-            roleController:{
-                name:"",
-                currentPage: 1,
-                pageSize: 10,
+            userController:{
+                current: 1,
+                size:10,
                 totalResult: 0
             },
-            dataSource:[],
-            selectedRowKeys:[],
-            loading:false,
-
+            dataSource: [],
+            loading: false,
+            selectedRowKeys: []
         })
-        // 在页面加载时执行加载数据函数
         onMounted(()=>{
             loadData()
         })
-        // 提交查询表单
-        const onFinish=()=>{
-
-        }
-        // 控制按钮得到点击执行事件
-        const handleAdd=()=>{
-
-        }
-        // 批量删除
-        const handleBatchDelete=()=>{
-
-        }
-        // 清空选中
-        const onClearSelected=()=>{
-
-        }
-        // 点击编辑按钮执行事件
-        const handleEdit=(row:any)=>{
-
-        }
-        // 控制删除按钮点击
-        const handleDel=(row:any)=>{
-
-        }
-        // 控制加载数据
         const loadData=()=>{
-            // 控制表格开始加载数据
             state.loading=true
-            findByPage(state.roleController).then(res=>{
-                state.roleController.currentPage=res.data.current
-                state.roleController.totalResult=res.data.total
-                state.roleController.pageSize=res.data.size
+            findByPage(state.userController).then(res=>{
                 state.dataSource=res.data.records
+                state.userController.current=res.data.current
+                state.userController.size=res.data.size
+                state.userController.totalResult=res.data.total
             }).finally(()=>{
                 state.loading=false
             })
+        }   
+        // 查询表单提交事件
+        const onFinish=()=>{
+
+        }
+        // 控制新增按钮点击事件
+        const handleAdd=()=>{
+
+        }
+        // 控制批量删除事件
+        const handleBatchDelete=()=>{
+
         }
         // 控制分页切换
         const handlePageChange:VxePagerEvents.PageChange = ({ currentPage, pageSize })=>{
-			state.roleController.currentPage=currentPage
-			state.roleController.pageSize=pageSize
+			state.userController.current=currentPage
+			state.userController.size=pageSize
 			loadData()
 		}
         // 控制全选
@@ -168,20 +153,27 @@ export default defineComponent({
 			const $table = mainTable.value;
 			state.selectedRowKeys = $table.getCheckboxRecords();
 		};
+        const handleEdit=(row:unknown)=>{
+
+        }
+        const handleDel=(row:unknown)=>{
+
+        }
         return {
             ...toRefs(state),
-            handleAdd,
+            onFinish,
             handleBatchDelete,
-            onClearSelected,
-            handleEdit,
-            selectAllChangeEvent1,
-            selectChangeEvent1,
-            handleDel,
             handlePageChange,
+            handleEdit,
+            handleDel,
+            selectAllChangeEvent1,
             mainTable,
-            onFinish
+            selectChangeEvent1,
+            handleAdd
         }
     },
 })
 </script>
+<style scoped>
 
+</style>

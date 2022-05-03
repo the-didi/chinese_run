@@ -91,7 +91,6 @@ public class JwtCheckFilter implements GlobalFilter, Ordered {
         return Boolean.TRUE ;
     }
 
-
     /**
      * 拦截器的顺序
      * @return

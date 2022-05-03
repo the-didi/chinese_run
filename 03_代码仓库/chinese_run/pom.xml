@@ -216,6 +216,6 @@
         <module>crwms_common</module>
         <module>crwms_admin</module>
         <module>crwms_tenant</module>
-        <module>crwms_user</module>
+        <module>crwms_online</module>
     </modules>
 </project>

@@ -35,3 +35,10 @@ export function deleteByIds(params:object){
         data: params
     })
 }
+export function getMenuById(params: object){
+    return request({
+        url: '/admin/menus/getById',
+        method: 'get',
+        params: params
+    })
+}

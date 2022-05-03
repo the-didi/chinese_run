@@ -24,4 +24,20 @@ public class DriverServiceImpl extends ServiceImpl<DriverMapper,Driver> implemen
     public Page<Driver> queryAllDrivers(Page<Driver> page) {
         return page(page,new LambdaQueryWrapper<Driver>());
     }
+    @Autowired
+    private DriverMapper driverMapper;
+    @Override
+    public int addDriver(Driver driver) {
+        return driverMapper.insert(driver);
+    }
+
+    @Override
+    public int deleteDriverById(Long id) {
+        return driverMapper.deleteById(id);
+    }
+
+    @Override
+    public int updateDriver(Driver driver) {
+        return driverMapper.updateById(driver);
+    }
 }
