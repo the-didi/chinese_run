@@ -20,7 +20,6 @@ public interface SysMenuService extends IService<SysMenu>{
     int deleteMenuById(Long menuId);
     int addMenu(SysMenu sysMenu);
     int updateMenu(SysMenu sysMenu);
-
     boolean deleteMenuByIds(List<Long> ids);
 
 }

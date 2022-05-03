@@ -14,10 +14,10 @@
         <module name="gateway-server" />
         <module name="crwms_common" />
         <module name="admin-service" />
-        <module name="crwms_user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="crwms_user" target="8" />
       <module name="gateway-service" target="8" />
     </bytecodeTargetLevel>
   </component>

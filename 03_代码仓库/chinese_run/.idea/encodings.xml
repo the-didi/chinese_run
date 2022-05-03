@@ -6,6 +6,5 @@
     <file url="file://$PROJECT_DIR$/crwms_iaas/authorization-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_iaas/gateway-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_tenant/tenant-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/crwms_user/src/main/java" charset="UTF-8" />
   </component>
 </project>

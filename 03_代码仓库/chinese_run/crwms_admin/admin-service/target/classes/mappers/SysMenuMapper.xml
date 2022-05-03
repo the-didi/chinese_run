@@ -23,38 +23,6 @@
     id, parent_id, parent_key, `type`, `name`, `desc`, target_url, sort, `status`, create_by, 
     modify_by, created, last_update_time
   </sql>
-    <insert id="addMenu" parameterType="com.advgm.domain.SysMenu">
-        INSERT INTO sys_menu
-                (
-                 parent_id,
-                 parent_key,
-                 type,
-                 name,
-                 `desc`,
-                 target_url,
-                 sort,
-                 status,
-                 create_by,
-                 modify_by
-                 )
-                 VALUES
-                (
-                    #{parentId},
-                    #{parentKey},
-                    #{type},
-                    #{name},
-                    #{desc},
-                    #{targetUrl},
-                    #{sort},
-                    #{status},
-                    #{createBy},
-                    #{modifyBy}
-                )
-
-    </insert>
-    <delete id="deleteMenuById" parameterType="java.lang.Long">
-        DELETE FROM sys_menu WHERE id=#{menuId}
-    </delete>
     <select id="selectMenusByUserId" resultMap="BaseResultMap">
         SELECT
           m.id,

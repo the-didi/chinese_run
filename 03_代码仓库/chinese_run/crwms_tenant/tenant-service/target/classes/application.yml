@@ -1,0 +1,14 @@
+server:
+  port: 9998
+spring:
+  application:
+    name: tenant-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos-server:8848
+  datasource:
+    url: jdbc:mysql://mysql-server:3306/cr_wms?serverTimezone=UTC
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
