@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]" date="1651572007599" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2022/5/3 18:00 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="crwms_online/online-service/target/classes/com/advgm/service/impl/OnlineCgFormServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/OnlineCgFormServiceImpl.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="crwms_online/online-service/target/classes/com/advgm/service/OnlineCgFormService.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/OnlineCgFormService.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="crwms_online/online-service/target/classes/com/advgm/controller/OnlineCgFormController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/OnlineCgFormController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="crwms_online/online-service/target/classes/com/advgm/OnlineServiceApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/OnlineServiceApplication.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="crwms_online/online-service/target/classes/com/advgm/domain/OnlineCgForm.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/OnlineCgForm.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="crwms_online/online-service/target/classes/com/advgm/mapper/OnlineCgFormMapper.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2022_5_3_18_00_[Changes]/OnlineCgFormMapper.class" />
+  </binary>
+</changelist>

@@ -1,0 +1,60 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"MavenProjectsManager\">\r\n    <option name=\"originalFiles\">\r\n      <list>\r\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8 (2)\" project-jdk-type=\"JavaSDK\" />\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"jpab\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 77d957ad590b02860d13a9f57a32c191c770e9ee)
++++ b/.idea/misc.xml	(date 1651572033155)
+@@ -7,6 +7,20 @@
+         <option value="$PROJECT_DIR$/pom.xml" />
+       </list>
+     </option>
++    <option name="ignoredFiles">
++      <set>
++        <option value="$PROJECT_DIR$/crwms_admin/admin-api/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_admin/admin-service/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_admin/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_common/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_iaas/authorization-server/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_iaas/gateway-server/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_iaas/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_tenant/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_tenant/tenant-api/pom.xml" />
++        <option value="$PROJECT_DIR$/crwms_tenant/tenant-service/pom.xml" />
++      </set>
++    </option>
+   </component>
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK" />
+   <component name="ProjectType">
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"true\" />\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"tenant-api\" />\r\n        <module name=\"authorization-server\" />\r\n        <module name=\"tenant-service\" />\r\n        <module name=\"admin-api\" />\r\n        <module name=\"gateway-server\" />\r\n        <module name=\"crwms_common\" />\r\n        <module name=\"admin-service\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"admin-api\" options=\"-parameters\" />\r\n      <module name=\"admin-service\" options=\"-parameters\" />\r\n      <module name=\"authorization-server\" options=\"-parameters\" />\r\n      <module name=\"crwms_common\" options=\"-parameters\" />\r\n      <module name=\"gateway-server\" options=\"-parameters\" />\r\n      <module name=\"tenant-api\" options=\"-parameters\" />\r\n      <module name=\"tenant-service\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision 77d957ad590b02860d13a9f57a32c191c770e9ee)
++++ b/.idea/compiler.xml	(date 1651572033165)
+@@ -3,18 +3,6 @@
+   <component name="CompilerConfiguration">
+     <annotationProcessing>
+       <profile default="true" name="Default" enabled="true" />
+-      <profile name="Maven default annotation processors profile" enabled="true">
+-        <sourceOutputDir name="target/generated-sources/annotations" />
+-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+-        <outputRelativeToContentRoot value="true" />
+-        <module name="tenant-api" />
+-        <module name="authorization-server" />
+-        <module name="tenant-service" />
+-        <module name="admin-api" />
+-        <module name="gateway-server" />
+-        <module name="crwms_common" />
+-        <module name="admin-service" />
+-      </profile>
+     </annotationProcessing>
+   </component>
+   <component name="JavacSettings">
