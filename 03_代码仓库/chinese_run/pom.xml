@@ -217,5 +217,6 @@
         <module>crwms_admin</module>
         <module>crwms_tenant</module>
         <module>crwms_online</module>
+        <module>crwms_user</module>
     </modules>
 </project>

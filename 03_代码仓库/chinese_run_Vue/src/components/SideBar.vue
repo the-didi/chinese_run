@@ -10,18 +10,18 @@
 		<div v-for="(item, index) in menuList" :key="index">
 			<a-menu-item :key="item.id" @click="handleMenuChange(item.targetUrl)" v-if="item.childs.length == 0">
 				<template #icon>
-					<Icon :icon="'AppstoreOutlined'" />
+					<Icon :icon="item.menuIcon" />
 				</template>
 				<span v-show="!isOpen">{{ item.name }}</span>
 			</a-menu-item>
 			<a-sub-menu :key="item.id">
 				<template #icon>
-					<Icon :icon="'AppstoreOutlined'" />
+					<Icon :icon="item.menuIcon" />
 				</template>
 				<template #title><span  v-show="!isOpen">{{ item.name }}</span></template>
 				<a-menu-item v-for="e in item.childs" @click="handleMenuChange(e)" :key="e.id">
 					<template #icon>
-						<Icon :icon="'AppstoreOutlined'" />
+						<Icon :icon="e.menuIcon" />
 					</template>
 					<span>{{ e.name }}</span>
 				</a-menu-item>

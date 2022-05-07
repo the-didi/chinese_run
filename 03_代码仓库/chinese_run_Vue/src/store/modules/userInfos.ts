@@ -61,6 +61,7 @@ function arrayToTree(menuList:any){
 			}
 		}
 	})
+	parentList.sort((a,b)=>a.sort<b.sort?-1:a.sort>b.sort?1:0)
 	return parentList
 }
 export default userInfosModule;

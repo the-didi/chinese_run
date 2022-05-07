@@ -82,6 +82,7 @@ import {
 import { reactive, ref, toRefs } from '@vue/reactivity';
 import type { SelectProps } from 'ant-design-vue';
 import router from '../router';
+import {Session} from '/@/utils/storage'
 export default defineComponent({
 	components: {
 		MenuFoldOutlined,
@@ -118,6 +119,7 @@ export default defineComponent({
 			window.open('http://www.freeprogramming.cn');
 		};
 		const handleLogout=()=>{
+			Session.clear();
 			router.push("/login")
 		}
 		return {

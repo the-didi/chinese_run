@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: tenant-service
+  cloud:  # nacos地址
+    nacos:
+      server-addr: nacos-server:8848
+      config:
+        file-extension: yaml
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql-server:3306/cr_wms?serverTimezone=UTC
+    username: root
+    password: 123456
+  profiles:
+    active: dev

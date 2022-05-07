@@ -25,6 +25,12 @@ spring:
             - Path=/online/**
           filters:
             - StripPrefix=1
+        - id: tenant-service_router
+          uri: lb://tenant-service
+          predicates:
+            - Path=/tenant/**
+          filters:
+            - StripPrefix=1
         - id: test_router
           uri: http://www.aliyun.com
           predicates:
