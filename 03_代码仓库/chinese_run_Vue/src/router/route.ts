@@ -87,6 +87,14 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				}
 			},
 			{
+				path:'/driver',
+				name: 'Driver',
+				component: ()=>import("/@/views/system/driver/index.vue"),
+				meta:{
+					title: '司机管理'
+				}
+			},
+			{
 				path: '/online/cgform',
 				name: 'CgForm',
 				component: ()=>import("/@/views/online/cgform/index.vue"),
