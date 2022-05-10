@@ -117,6 +117,12 @@ public class SysMenu {
     @ApiModelProperty(value="修改时间")
     private Date lastUpdateTime;
 
+    /**
+     * 菜单图标
+     */
+    @TableField(value = "menu_icon")
+    @ApiModelProperty(value = "菜单图标")
+    private String menuIcon;
 
     /**
      * 一个菜单对应多个权限
@@ -140,6 +146,7 @@ public class SysMenu {
     @TableField(exist = false)
     @ApiModelProperty("该菜单的唯一Key值")
     private  String menuKey ;
+
 
 
 

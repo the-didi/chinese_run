@@ -59,7 +59,16 @@
 			<vxe-column type="checkbox" width="60"></vxe-column>
 			<vxe-column field="name" title="菜单名称"></vxe-column>
 			<vxe-column field="desc" show-overflow title="菜单描述"></vxe-column>
-			<vxe-column field="status" title="状态"></vxe-column>
+			<vxe-column field="status" title="状态">
+				<template #default="{row}">
+					<a-switch 
+						v-model:checked="row.status" 
+						checked-children="启用" 
+						:checked-value="1" 
+						:unchecked-value="0" 
+						un-checked-children="禁用" />
+				</template>
+			</vxe-column>
 			<vxe-column field="createBy" title="创建人"></vxe-column>
 			<vxe-column field="modifyBy" title="修改人"></vxe-column>
 			<vxe-column field="created" title="创建时间"></vxe-column>
@@ -89,7 +98,7 @@
 		<a-modal v-model:visible="addMenuVisible" title="新增菜单" cancelText="取消" okText="确定" @ok="handleAddOk">
 			<a-form name="menu_add_controllers" :model="menuAddController" @finish="onAddFinish">
 				<a-form-item name="menuName" label="菜单名称">
-					<a-input v-model:value="menuAddController.name" allow-clear placeholder="输入菜单名称查询" />
+					<a-input v-model:value="menuAddController.name" allow-clear placeholder="输入菜单名称" />
 				</a-form-item>
 				<a-form-item name="menuDesc" label="菜单描述">
 					<a-textarea v-model:value="menuAddController.desc" allow-clear placeholder="输入菜单描述" />
@@ -98,6 +107,9 @@
 					<a-select ref="select" v-model:value="menuAddController.type" placeholder="请选择父菜单,不选择为父菜单" style="width: 100%">
 						<a-select-option v-for="(item, index) in parentList" :key="index" :value="item.id">{{ item.name }}</a-select-option>
 					</a-select>
+				</a-form-item>
+				<a-form-item name="menuIcon" label="菜单图标">
+					<a-input v-model:value="menuAddController.menuIcon" allow-clear placeholder="输入菜单图标" />
 				</a-form-item>
 				<a-form-item name="menuUrl" label="菜单指向路径">
 					<a-input type="text" placeholder="请输入菜单指向路径" v-model:value="menuAddController.targetUrl"></a-input>
@@ -124,13 +136,16 @@
 				<a-form-item name="menuDesc" label="菜单描述">
 					<a-textarea v-model:value="menuEditController.desc" allow-clear placeholder="输入菜单描述" />
 				</a-form-item>
-				<a-form-item name="menuType" label="菜单描述">
+				<a-form-item name="menuType" label="父菜单">
 					<a-select ref="select" v-model:value="menuEditController.type" placeholder="请选择父菜单,不选择为父菜单" style="width: 100%">
 						<a-select-option v-for="(item, index) in parentList" :key="index" :value="item.id">{{ item.name }}</a-select-option>
 					</a-select>
 				</a-form-item>
+				<a-form-item name="menuIcon" label="菜单图标">
+					<a-input v-model:value="menuEditController.menuIcon" allow-clear placeholder="输入菜单图标" />
+				</a-form-item>
 				<a-form-item name="menuUrl" label="菜单指向路径">
-					<a-input type="text" placeholder="请输入菜单指向路径" allow-clear v-model:value="menuAddController.targetUrl"></a-input>
+					<a-input type="text" placeholder="请输入菜单指向路径" allow-clear v-model:value="menuEditController.targetUrl"></a-input>
 				</a-form-item>
 				<a-form-item name="menuStatus" label="菜单状态">
 					<a-switch
@@ -151,7 +166,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, reactive, toRefs } from 'vue';
 import { Icon } from '/@/utils/antdIcon';
-import { findByPage, deleteByIds, deleteMenuById, getMenuById, addMenu } from '/@/api/system/menu';
+import { findByPage, deleteByIds, deleteMenuById, getMenuById, addMenu,updateMenu } from '/@/api/system/menu';
 import { VxeTableInstance, VxeTableEvents, VxePagerEvents } from 'vxe-table';
 import { message } from 'ant-design-vue';
 import { Session } from '/@/utils/storage';
@@ -269,13 +284,22 @@ export default defineComponent({
 				})
 				.finally(() => {
 					state.addMenuVisible = false;
+					state.menuAddController={}
 					loadData();
 				});
 		};
 		// 设置新增弹窗之后执行网络事件
 		const onAddFinish = () => {};
+		// 设置编辑菜单之后执行的网格事件
 		const handleEditOk = () => {
-			state.editMenuVisible = false;
+			updateMenu(state.menuEditController).then(res=>{
+				message.success(res.data);
+			}).finally(()=>{
+				state.editMenuVisible = false;
+				state.menuEditController={}
+				loadData()
+			})
+			
 		};
 		const handlePrivilege = () => {};
 		return {

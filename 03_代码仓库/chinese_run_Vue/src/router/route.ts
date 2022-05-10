@@ -101,6 +101,30 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				meta: {
 					title: '在线表单开发'
 				}
+			},
+			{
+				path: '/warehouse/reservoir',
+				name: 'reservoir',
+				component: ()=>import("/@/views/warehouse/reservoir/index.vue"),
+				meta: {
+					title: '库区配置'
+				}
+			},
+			{
+				path: '/warehouse/storage',
+				name: 'storage',
+				component: ()=>import("/@/views/warehouse/storage/index.vue"),
+				meta: {
+					title: '储区配置'
+				}
+			},
+			{
+				path: '/warehosue/cargospace',
+				name: 'cargospace',
+				component: ()=>import("/@/views/warehouse/cargospace/index.vue"),
+				meta: {
+					title: "货位配置"
+				}
 			}
 		]
 	}

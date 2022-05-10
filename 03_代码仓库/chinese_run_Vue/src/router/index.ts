@@ -26,18 +26,18 @@ router.beforeEach(async (to, from, next) => {
 	const token = Session.get('Authorization');
 	if (to.path === '/login' && !token) {
 		next();
-		NProgress.done();
 	} else {
 		console.log("此处是路由守卫",token)
 		if (!token) {
 			next(`/login`);
 			Session.clear();
-			NProgress.done();
+			NextLoading.done()
 		} else {
 			next();
+			NextLoading.done()
 		}
 		next()
-		NProgress.done();
+		NextLoading.done()
 	}
 });
 

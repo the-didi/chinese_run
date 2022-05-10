@@ -16,6 +16,7 @@
         <module name="gateway-server" />
         <module name="crwms_common" />
         <module name="admin-service" />
+        <module name="crwms_user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -31,6 +32,7 @@
       <module name="authorization-server" options="-parameters" />
       <module name="crwms_common" options="-parameters" />
       <module name="crwms_online" options="-parameters" />
+      <module name="crwms_user" options="-parameters" />
       <module name="gateway-server" options="-parameters" />
       <module name="online-api" options="-parameters" />
       <module name="online-service" options="-parameters" />
