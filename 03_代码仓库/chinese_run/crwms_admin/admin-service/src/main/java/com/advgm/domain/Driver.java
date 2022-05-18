@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author 袁鹏
  * @date 2022年04月30日 17:49
@@ -56,4 +58,16 @@ public class Driver {
     @TableField(value = "car_id")
     @ApiModelProperty(value = "司机车牌号")
     private String carId;
+    /**
+     * 创建时间
+     */
+    @TableField(value = "created")
+    @ApiModelProperty(value = "创建时间")
+    private Date created;
+    /**
+     * 修改时间
+     */
+    @TableField(value = "lastUpdateTime")
+    @ApiModelProperty(value = "创建时间")
+    private Date lastUpdateTime;
 }

@@ -17,7 +17,7 @@
 				<form action="#" class="sign-up-form">
 					<h2 class="title">Sign up</h2>
 					<div class="input-field">
-						<i class="fas fa-user"></i>
+								<i class="fas fa-user"></i>
 						<input type="text" placeholder="Username" />
 					</div>
 					<div class="input-field">

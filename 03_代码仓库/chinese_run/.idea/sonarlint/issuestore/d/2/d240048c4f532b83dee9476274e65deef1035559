@@ -1,0 +1,14 @@
+
+o
+java:S2293X"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ö‹ôœ
+A
+java:S1075:"&Remove this hard-coded path-delimiter.(¢ÆŸÍøÿÿÿÿ
+c
+java:S5361:"HReplace this call to "replaceAll()" by a call to the "replace()" method.(¢ÆŸÍøÿÿÿÿ
+c
+java:S5361B"HReplace this call to "replaceAll()" by a call to the "replace()" method.(·ŠøÙûÿÿÿÿ
+T
+java:S4719S"9Replace charset name argument with StandardCharsets.UTF_8(‹á±Õÿÿÿÿÿ
+V	java:S125_"<This block of commented-out lines of code should be removed.(¦Ðˆøúÿÿÿÿ
+:
+java:S1168n"$Return an empty map instead of null.(¥¹ï

@@ -57,6 +57,7 @@ public class ConfigController {
     @PreAuthorize("hasAuthority('config_update')")
     public R update(@RequestBody @Validated  Config config){
         boolean update = configService.updateById(config);
+
         if(update){
             return R.ok() ;
         }

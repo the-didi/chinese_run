@@ -12,15 +12,12 @@
     <file url="file://$PROJECT_DIR$/crwms_iaas/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_online/online-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_online/online-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/crwms_online/online_api/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/crwms_online/online_service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_online/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_online/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_tenant/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_tenant/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_tenant/tenant-api/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/crwms_tenant/tenant-service/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/crwms_user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

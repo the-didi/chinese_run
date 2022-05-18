@@ -1,0 +1,9 @@
+
+j
+java:S2259'"OA "NullPointerException" could be thrown; "requestAttributes" is nullable here.(–ŠÎ–ùÿÿÿÿ
+T
+java:S2589‡"8Remove this expression which always evaluates to "false"(ëÞš¥úÿÿÿÿ
+x
+java:S11570"cReplace these toUpperCase()/toLowerCase() and equals() calls with a single equalsIgnoreCase() call.(ïˆÆ<
+d
+java:S1612Œ"HReplace this lambda with method reference 'SimpleGrantedAuthority::new'.(‚ï’´ÿÿÿÿÿ
