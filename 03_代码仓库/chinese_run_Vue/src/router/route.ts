@@ -95,6 +95,22 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				}
 			},
 			{
+				path:'/order',
+				name: 'Order',
+				component: ()=>import("/@/views/system/order/index.vue"),
+				meta:{
+					title: '订单管理'
+				}
+			},
+			{
+				path:'/transport',
+				name: 'transport',
+				component: ()=>import("/@/views/system/transport/index.vue"),
+				meta:{
+					title: '运输管理'
+				}
+			},
+			{
 				path: '/online/cgform',
 				name: 'CgForm',
 				component: ()=>import("/@/views/online/cgform/index.vue"),
