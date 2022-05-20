@@ -143,6 +143,7 @@ export default defineComponent({
                 state.transportController.totalResult=res.data.total
                 state.transportController.pageSize=res.data.size
                 state.dataSource=res.data.records
+                console.log(state.dataSource)
             }).finally(()=>{
                 state.loading=false
             })

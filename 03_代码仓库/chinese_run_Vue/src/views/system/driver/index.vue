@@ -3,9 +3,6 @@
         <!-- 控制查询模块开始 -->
         <div class="data-form">
 			<a-form name="driver_controllers" layout="inline" :model="driverController" @finish="onFinish">
-				<a-form-item name="menuName" label="用户账号">
-					<a-input v-model:value="driverController" allow-clear placeholder="输入用户账号查询" />
-				</a-form-item>
                 <a-form-item name="menuName" label="用户姓名">
 					<a-input v-model:value="driverController.fullname" allow-clear placeholder="请输入用户姓名"></a-input>
 				</a-form-item>
@@ -85,13 +82,57 @@
 		>
 		</vxe-pager>
         <!-- 分页模块结束 -->
+		<!-- 添加弹窗开始 -->
+		<a-modal v-model:visible="editMenuVisible" title="修改司机信息" cancelText="取消" okText="确定" @ok="handleEditOk">
+					<a-form name="driver_add_controllers" :model="driverEditController" @finish="onAddFinish">
+				<a-form-item name="driverName" label="司机姓名">
+					<a-input v-model:value="driverEditController.name" allow-clear />
+				</a-form-item>
+				<a-form-item name="driverAge" label="年龄">
+					<a-input v-model:value="driverEditController.age" allow-clear />
+				</a-form-item>
+				<a-form-item name="driversex" label="司机性别">
+					<a-input v-model:value="driverEditController.sex" allow-clear />
+				</a-form-item>
+				<a-form-item name="driverTel" label="手机号">
+					<a-input v-model:value="driverEditController.tel" allow-clear />
+				</a-form-item>
+				<a-form-item name="driverCarId" label="车牌号">
+					<a-input v-model:value="driverEditController.carId" allow-clear />
+				</a-form-item>
+				</a-form>
+		</a-modal>
+		<!-- 添加弹窗结束 -->
+			<!-- 编辑弹窗开始 -->
+		<!-- 此处按照正常逻辑来说要提出来一个组件 不过我懒了 -->
+		<a-modal v-model:visible="addDriverVisible" title="添加司机信息" cancelText="取消" okText="确定" @ok="handleAddOk">
+					<a-form name="driver_add_controllers" :model="driverAddController" @finish="onAddFinish">
+				<a-form-item name="driverName" label="司机姓名">
+					<a-input v-model:value="driverAddController.name" allow-clear />
+				</a-form-item>
+				<a-form-item name="driverAge" label="年龄">
+					<a-input v-model:value="driverAddController.age" allow-clear />
+				</a-form-item>
+				<a-form-item name="driversex" label="司机性别">
+					<a-input v-model:value="driverAddController.sex" allow-clear />
+				</a-form-item>
+				<a-form-item name="driverTel" label="手机号">
+					<a-input v-model:value="driverAddController.tel" allow-clear />
+				</a-form-item>
+				<a-form-item name="driverCarId" label="车牌号">
+					<a-input v-model:value="driverAddController.carId" allow-clear />
+				</a-form-item>
+				</a-form>
+		</a-modal>
+		<!-- 编辑弹窗结束 -->
     </a-card>
 </template>
 <script lang="ts">
 import { defineComponent, reactive,toRefs,ref, onMounted } from 'vue'
 import { VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
 import { Icon } from '/@/utils/antdIcon';
-import {findByPage} from '/@/api/system/driver'
+import { message } from 'ant-design-vue';
+import {findByPage,getDriverById,updateDriver,deleteDriver,addDriver} from '/@/api/system/driver'
 export default defineComponent({
     components: {
         Icon
@@ -106,7 +147,18 @@ export default defineComponent({
             },
             dataSource: [],
             loading: false,
-            selectedRowKeys: []
+            selectedRowKeys: [],
+			editMenuVisible : false,
+			driverEditController:{},
+			addDriverVisible:false,
+			driverAddController:{
+				name:'',
+				sex:'',
+				age:'',
+				carId:'',
+				tel:''
+			}
+			
         })
         onMounted(()=>{
             loadData()
@@ -128,7 +180,7 @@ export default defineComponent({
         }
         // 控制新增按钮点击事件
         const handleAdd=()=>{
-
+             state.addDriverVisible =true
         }
         // 控制批量删除事件
         const handleBatchDelete=()=>{
@@ -151,19 +203,60 @@ export default defineComponent({
 			const $table = mainTable.value;
 			state.selectedRowKeys = $table.getCheckboxRecords();
 		};
-        const handleEdit=(row:unknown)=>{
-
+        const handleEdit=(row:any)=>{
+			state.editMenuVisible = true;
+				getDriverById({ id: row.id })
+				.then((res) => {
+					state.driverEditController = res.data;
+					
+				})
+				.finally(() => {
+					state.editMenuVisible = true;
+				});
         }
-        const handleDel=(row:unknown)=>{
-
+        const handleDel=(row:any)=>{
+				state.loading = true;
+			deleteDriver({id:row.id})
+				.then((res) => {
+					message.success(res.data);
+				})
+				.finally(() => {
+					state.loading = false;
+				});
+			console.log(row);
         }
+		const handleEditOk =()=>{
+				updateDriver(state.driverEditController).then(res=>{
+				message.success(res.data);
+			}).finally(()=>{
+				state.editMenuVisible = false;
+				state.driverEditController={}
+				loadData()
+			})
+		}
+		const handleAddOk = ()=>{
+				addDriver(state.driverAddController).then(res=>{
+					message.success(res.data)
+				}).finally(()=>{
+					state.addDriverVisible = false
+					state.driverAddController={
+						name:'',
+						age:'',
+						sex:'',
+						tel:'',
+						carId:''
+					}
+				})
+		}
         return {
             ...toRefs(state),
             onFinish,
             handleBatchDelete,
             handlePageChange,
             handleEdit,
+			handleAddOk,
             handleDel,
+			 handleEditOk,
             selectAllChangeEvent1,
             mainTable,
             selectChangeEvent1,

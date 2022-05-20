@@ -56,7 +56,7 @@ public class DriverController {
         }
         return R.ok("删除成功");
     }
-    @PutMapping("update")
+    @PutMapping("/update")
     @ApiImplicitParam(value = "修改司机信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id" , value = "司机编号"),
@@ -68,10 +68,20 @@ public class DriverController {
 
     })
     public R<String> updateDriver(@RequestBody Driver driver){
-        int i = driverService.updateDriver(driver);
+        System.out.println(driver);
+        int i = driverService.updateDriverById(driver);
         if(i==0){
             return R.ok("更新失败");
         }
         return R.ok("更新成功");
     }
+    @GetMapping("/getById")
+    @ApiImplicitParam(value = "通过id查询司机信息")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id",value = "司机编号")
+    })
+  public R<Driver> getDriverById(Long id){
+        Driver byId = driverService.getDriverById(id);
+        return R.ok(byId);
+  };
 }

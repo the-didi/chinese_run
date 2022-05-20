@@ -14,5 +14,6 @@ public interface DriverService {
     Page<Driver> queryAllDrivers(Page<Driver> page);
     int addDriver(Driver driver);
     int deleteDriverById(Long id);
-    int updateDriver(Driver driver);
+    int updateDriverById(Driver driver);
+    Driver getDriverById(Long id);
 }

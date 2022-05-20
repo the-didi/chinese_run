@@ -56,13 +56,13 @@
 			>
 			<vxe-column type="seq" width="60" title="#"></vxe-column>
 			<vxe-column type="checkbox" width="60"></vxe-column>
-			<vxe-column field="wName" title="物料名称"></vxe-column>
-            <vxe-column field="number" title="物料编码"></vxe-column>
-			<vxe-column field="description" title="角色描述"></vxe-column>
+			<vxe-column field="orderId" title="订单编号"></vxe-column>
+            <vxe-column field="wName" title="物料名称"></vxe-column>
+			<vxe-column field="number" title="物料数量"></vxe-column>
+			<vxe-column field="orderTime" title="下单时间"></vxe-column>
 			<vxe-column field="status" title="状态"></vxe-column>
-			<vxe-column field="positon" title="位置"></vxe-column>
-			<vxe-column field="orderTime" show-overflow title="创建时间"></vxe-column>
 			<vxe-column field="payTime" show-overflow title="付款时间"></vxe-column>
+			<vxe-column field="signTime" title="签收时间"></vxe-column>
 			<vxe-column title="操作">
 				<template #default="{ row }">
 					<a-button type="link" @click="handleEdit(row)">编辑</a-button>

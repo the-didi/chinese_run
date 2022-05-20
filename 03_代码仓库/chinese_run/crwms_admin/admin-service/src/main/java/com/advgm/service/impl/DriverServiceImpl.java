@@ -37,7 +37,12 @@ public class DriverServiceImpl extends ServiceImpl<DriverMapper,Driver> implemen
     }
 
     @Override
-    public int updateDriver(Driver driver) {
+    public int updateDriverById(Driver driver) {
         return driverMapper.updateById(driver);
+    }
+
+    @Override
+    public Driver getDriverById(Long id) {
+        return driverMapper.selectById(id);
     }
 }
