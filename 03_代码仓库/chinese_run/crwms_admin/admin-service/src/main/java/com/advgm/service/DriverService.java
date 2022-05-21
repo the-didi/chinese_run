@@ -16,4 +16,6 @@ public interface DriverService {
     int deleteDriverById(Long id);
     int updateDriverById(Driver driver);
     Driver getDriverById(Long id);
+//    通过司机姓名查询司机信息
+    List<Driver> getDriverByName(String name);
 }

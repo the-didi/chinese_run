@@ -10,6 +10,9 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 /**
  * @author 袁鹏
  * @date 2022年05月03日 14:51
@@ -57,7 +60,7 @@ public class DriverController {
         return R.ok("删除成功");
     }
     @PutMapping("/update")
-    @ApiImplicitParam(value = "修改司机信息")
+    @ApiOperation(value = "修改司机信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id" , value = "司机编号"),
             @ApiImplicitParam(name="name",value = "司机姓名"),
@@ -84,4 +87,9 @@ public class DriverController {
         Driver byId = driverService.getDriverById(id);
         return R.ok(byId);
   };
+    @GetMapping("/getByName")
+    @ApiOperation(value = "通过姓名查询司机信息")
+    public List<Driver> getDriverByName(String name){
+        return driverService.getDriverByName(name);
+    }
 }

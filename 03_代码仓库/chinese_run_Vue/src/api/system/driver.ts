@@ -40,3 +40,12 @@ export function addDriver(params:Object){
                 params:params
             })
     }
+    // 通过姓名查询司机信息
+    export function getDriverByName(params:string){
+        return request({
+            url:'/admin/driver/getByName',
+            params:{
+                'name':params
+            }
+        })
+    }

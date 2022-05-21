@@ -5,6 +5,7 @@ import com.advgm.domain.SysMenu;
 import com.advgm.mapper.DriverMapper;
 import com.advgm.service.DriverService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,12 @@ public class DriverServiceImpl extends ServiceImpl<DriverMapper,Driver> implemen
     @Override
     public Driver getDriverById(Long id) {
         return driverMapper.selectById(id);
+    }
+
+    @Override
+    public List<Driver> getDriverByName(String name) {
+        QueryWrapper<Driver> wrapper = new QueryWrapper<>();
+        wrapper.eq("d_name",name);
+        return driverMapper.selectList(wrapper);
     }
 }

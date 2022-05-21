@@ -2,12 +2,12 @@
     <a-card class="activity-container">
         <!-- 控制查询模块开始 -->
         <div class="data-form">
-			<a-form name="driver_controllers" layout="inline" :model="driverController" @finish="onFinish">
+			<a-form name="driver_controllers" layout="inline" :model="driverAddController" @finish="onFinish">
                 <a-form-item name="menuName" label="用户姓名">
-					<a-input v-model:value="driverController.fullname" allow-clear placeholder="请输入用户姓名"></a-input>
+					<a-input v-model:value="driverAddController.name" allow-clear placeholder="请输入用户姓名"></a-input>
 				</a-form-item>
 				<a-form-item>
-					<a-button type="primary" html-type="submit">
+					<a-button type="primary" html-type="submit" @click="search()">
 						<template #icon>
 							<Icon icon="SearchOutlined" />
 						</template>
@@ -132,7 +132,7 @@ import { defineComponent, reactive,toRefs,ref, onMounted } from 'vue'
 import { VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
 import { Icon } from '/@/utils/antdIcon';
 import { message } from 'ant-design-vue';
-import {findByPage,getDriverById,updateDriver,deleteDriver,addDriver} from '/@/api/system/driver'
+import {findByPage,getDriverById,updateDriver,deleteDriver,addDriver,getDriverByName} from '/@/api/system/driver'
 export default defineComponent({
     components: {
         Icon
@@ -248,6 +248,14 @@ export default defineComponent({
 					}
 				})
 		}
+		const search =  ()=>{
+				getDriverByName(state.driverAddController.name).then(res=>{
+						state.dataSource = res
+					    state.driverController.totalResult =res.length
+				}).finally(()=>{
+					state.driverAddController.name = ''
+				})
+		}
         return {
             ...toRefs(state),
             onFinish,
@@ -260,7 +268,8 @@ export default defineComponent({
             selectAllChangeEvent1,
             mainTable,
             selectChangeEvent1,
-            handleAdd
+            handleAdd,
+			search
         }
     },
 })
