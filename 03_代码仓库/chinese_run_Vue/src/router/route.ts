@@ -55,6 +55,21 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				}
 			},
 			{
+				path:'/base/goods',
+				name: 'Goods',
+				component : () => import ('/@/views/base/goods/index.vue'),
+				meta:{
+					title : '商品'
+				}
+
+			},{
+				path: '/base/goods_details' ,
+				component : () => import('/@/views/base/goods_details/index.vue'),
+				meta:{
+					title: '商品明细'
+				}
+			},
+			{
 				path: '/menu',
 				name: 'Menu',
 				component: ()=>import('/@/views/system/menu/index.vue'),
@@ -140,6 +155,19 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				component: ()=>import("/@/views/warehouse/cargospace/index.vue"),
 				meta: {
 					title: "货位配置"
+				}
+			},{
+				path:'/base/out',
+				component:()=>import('/@/views/exwarehouse/base/index.vue'),
+				meta:{
+					title:'一般出库'
+				}
+			},
+			{
+				path:'/other/out',
+				component:()=>import('/@/views/exwarehouse/other/index.vue'),
+				meta:{
+					title:'其他出库'
 				}
 			}
 		]
