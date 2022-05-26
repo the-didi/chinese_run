@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advgm.mapper.CrGoodsTypeMapper">
+  <resultMap id="BaseResultMap" type="com.advgm.domain.CrGoodsType">
+    <!--@mbg.generated-->
+    <!--@Table cr_wms.cr_goods_type-->
+    <id column="id" property="id" />
+    <result column="create_name" property="createName" />
+    <result column="create_by" property="createBy" />
+    <result column="create_date" property="createDate" />
+    <result column="update_name" property="updateName" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_date" property="updateDate" />
+    <result column="sys_org_code" property="sysOrgCode" />
+    <result column="sys_company_code" property="sysCompanyCode" />
+    <result column="goods_type_code" property="goodsTypeCode" />
+    <result column="goods_type_name" property="goodsTypeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, create_name, create_by, create_date, update_name, update_by, update_date, sys_org_code, 
+    sys_company_code, goods_type_code, goods_type_name
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update cr_wms.cr_goods_type
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="create_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createName}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createBy}
+        </foreach>
+      </trim>
+      <trim prefix="create_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createDate}
+        </foreach>
+      </trim>
+      <trim prefix="update_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updateName}
+        </foreach>
+      </trim>
+      <trim prefix="update_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updateBy}
+        </foreach>
+      </trim>
+      <trim prefix="update_date = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updateDate}
+        </foreach>
+      </trim>
+      <trim prefix="sys_org_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.sysOrgCode}
+        </foreach>
+      </trim>
+      <trim prefix="sys_company_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.sysCompanyCode}
+        </foreach>
+      </trim>
+      <trim prefix="goods_type_code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.goodsTypeCode}
+        </foreach>
+      </trim>
+      <trim prefix="goods_type_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.goodsTypeName}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_goods_type
+    (id, create_name, create_by, create_date, update_name, update_by, update_date, sys_org_code, 
+      sys_company_code, goods_type_code, goods_type_name)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id}, #{item.createName}, #{item.createBy}, #{item.createDate}, #{item.updateName}, 
+        #{item.updateBy}, #{item.updateDate}, #{item.sysOrgCode}, #{item.sysCompanyCode}, 
+        #{item.goodsTypeCode}, #{item.goodsTypeName})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.advgm.domain.CrGoodsType">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_goods_type
+    (id, create_name, create_by, create_date, update_name, update_by, update_date, sys_org_code, 
+      sys_company_code, goods_type_code, goods_type_name)
+    values
+    (#{id}, #{createName}, #{createBy}, #{createDate}, #{updateName}, #{updateBy}, #{updateDate}, 
+      #{sysOrgCode}, #{sysCompanyCode}, #{goodsTypeCode}, #{goodsTypeName})
+    on duplicate key update 
+    id = #{id}, 
+    create_name = #{createName}, 
+    create_by = #{createBy}, 
+    create_date = #{createDate}, 
+    update_name = #{updateName}, 
+    update_by = #{updateBy}, 
+    update_date = #{updateDate}, 
+    sys_org_code = #{sysOrgCode}, 
+    sys_company_code = #{sysCompanyCode}, 
+    goods_type_code = #{goodsTypeCode}, 
+    goods_type_name = #{goodsTypeName}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.advgm.domain.CrGoodsType">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_goods_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createName != null">
+        create_name,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateName != null">
+        update_name,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="sysOrgCode != null">
+        sys_org_code,
+      </if>
+      <if test="sysCompanyCode != null">
+        sys_company_code,
+      </if>
+      <if test="goodsTypeCode != null">
+        goods_type_code,
+      </if>
+      <if test="goodsTypeName != null">
+        goods_type_name,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="createName != null">
+        #{createName},
+      </if>
+      <if test="createBy != null">
+        #{createBy},
+      </if>
+      <if test="createDate != null">
+        #{createDate},
+      </if>
+      <if test="updateName != null">
+        #{updateName},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate},
+      </if>
+      <if test="sysOrgCode != null">
+        #{sysOrgCode},
+      </if>
+      <if test="sysCompanyCode != null">
+        #{sysCompanyCode},
+      </if>
+      <if test="goodsTypeCode != null">
+        #{goodsTypeCode},
+      </if>
+      <if test="goodsTypeName != null">
+        #{goodsTypeName},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="createName != null">
+        create_name = #{createName},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate},
+      </if>
+      <if test="updateName != null">
+        update_name = #{updateName},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate},
+      </if>
+      <if test="sysOrgCode != null">
+        sys_org_code = #{sysOrgCode},
+      </if>
+      <if test="sysCompanyCode != null">
+        sys_company_code = #{sysCompanyCode},
+      </if>
+      <if test="goodsTypeCode != null">
+        goods_type_code = #{goodsTypeCode},
+      </if>
+      <if test="goodsTypeName != null">
+        goods_type_name = #{goodsTypeName},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,5 +1,5 @@
 <template>
-        这里是客户出库
+        这里是客户出库  
 </template>
     
 <script setup lang='ts'>

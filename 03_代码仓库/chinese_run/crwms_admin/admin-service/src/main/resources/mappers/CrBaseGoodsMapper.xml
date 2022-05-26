@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advgm.mapper.CrBaseGoodsMapper">
+  <resultMap id="BaseResultMap" type="com.advgm.domain.CrBaseGoods">
+    <!--@mbg.generated-->
+    <!--@Table cr_wms.cr_base_goods-->
+    <id column="id" property="id" />
+    <result column="g_name" property="gName" />
+    <result column="e_name" property="eName" />
+    <result column="g_no" property="gNo" />
+    <result column="c_name" property="cName" />
+    <result column="g_guige" property="gGuige" />
+    <result column="g_category" property="gCategory" />
+    <result column="zl" property="zl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, g_name, e_name, g_no, c_name, g_guige, g_category, zl
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update cr_wms.cr_base_goods
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="g_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gName}
+        </foreach>
+      </trim>
+      <trim prefix="e_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.eName}
+        </foreach>
+      </trim>
+      <trim prefix="g_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gNo}
+        </foreach>
+      </trim>
+      <trim prefix="c_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.cName}
+        </foreach>
+      </trim>
+      <trim prefix="g_guige = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gGuige}
+        </foreach>
+      </trim>
+      <trim prefix="g_category = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gCategory}
+        </foreach>
+      </trim>
+      <trim prefix="zl = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.zl}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_base_goods
+    (g_name, e_name, g_no, c_name, g_guige, g_category, zl)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gName}, #{item.eName}, #{item.gNo}, #{item.cName}, #{item.gGuige}, #{item.gCategory}, 
+        #{item.zl})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.advgm.domain.CrBaseGoods" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_base_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      g_name,
+      e_name,
+      g_no,
+      c_name,
+      g_guige,
+      g_category,
+      zl,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      #{gName},
+      #{eName},
+      #{gNo},
+      #{cName},
+      #{gGuige},
+      #{gCategory},
+      #{zl},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      g_name = #{gName},
+      e_name = #{eName},
+      g_no = #{gNo},
+      c_name = #{cName},
+      g_guige = #{gGuige},
+      g_category = #{gCategory},
+      zl = #{zl},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.advgm.domain.CrBaseGoods" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_base_goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gName != null">
+        g_name,
+      </if>
+      <if test="eName != null">
+        e_name,
+      </if>
+      <if test="gNo != null">
+        g_no,
+      </if>
+      <if test="cName != null">
+        c_name,
+      </if>
+      <if test="gGuige != null">
+        g_guige,
+      </if>
+      <if test="gCategory != null">
+        g_category,
+      </if>
+      <if test="zl != null">
+        zl,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="gName != null">
+        #{gName},
+      </if>
+      <if test="eName != null">
+        #{eName},
+      </if>
+      <if test="gNo != null">
+        #{gNo},
+      </if>
+      <if test="cName != null">
+        #{cName},
+      </if>
+      <if test="gGuige != null">
+        #{gGuige},
+      </if>
+      <if test="gCategory != null">
+        #{gCategory},
+      </if>
+      <if test="zl != null">
+        #{zl},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="gName != null">
+        g_name = #{gName},
+      </if>
+      <if test="eName != null">
+        e_name = #{eName},
+      </if>
+      <if test="gNo != null">
+        g_no = #{gNo},
+      </if>
+      <if test="cName != null">
+        c_name = #{cName},
+      </if>
+      <if test="gGuige != null">
+        g_guige = #{gGuige},
+      </if>
+      <if test="gCategory != null">
+        g_category = #{gCategory},
+      </if>
+      <if test="zl != null">
+        zl = #{zl},
+      </if>
+    </trim>
+  </insert>
+</mapper>
