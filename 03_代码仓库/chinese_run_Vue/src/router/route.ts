@@ -110,6 +110,30 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				}
 			},
 			{
+				path:'/Other',
+				name: 'Other storage',
+				component: ()=>import("/@/views/system/Otherstorage/index.vue"),
+				meta:{
+					title: '其它入库'
+				}
+			},
+			{
+				path:'/Purchase',
+				name: 'CustomerPuchase',
+				component: ()=>import("/@/views/system/CustomerPurchase/index.vue"),
+				meta:{
+					title: '客户进货'
+				}
+			},
+			{
+				path:'/subscribe',
+				name: 'Order in',
+				component: ()=>import("/@/views/system/Otherstorage/index.vue"),
+				meta:{
+					title: '预约进货'
+				}
+			},
+			{
 				path:'/order',
 				name: 'Order',
 				component: ()=>import("/@/views/system/order/index.vue"),
