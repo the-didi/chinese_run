@@ -41,7 +41,7 @@ export function addGoods(params:object){
     })
 }
 // 通过id查询商品信息
-export function getById(params:number){
+export function getById(params:object){
     return request({
         url:'/admin/base_goods/getById',
         method:'GET',

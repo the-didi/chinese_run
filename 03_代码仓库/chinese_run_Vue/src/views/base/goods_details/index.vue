@@ -86,7 +86,41 @@
                 <!-- 编辑弹出窗开始 -->
                 <!-- 编辑弹窗开始 -->
                 <a-modal v-model:visible=" editGoodsDetaisVisible" title="编辑商品信息" cancelText="取消" okText="确定" @ok="handleEditOk">
-      
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
+                         <a-form name="driver_add_controllers"  @finish="onAddFinish">
+                                <a-form-item  label="货主姓名">
+                                        <a-input allow-clear />
+                                </a-form-item>
+                        </a-form>
                 </a-modal>
                 <!-- 编辑弹出框结束 -->
 
