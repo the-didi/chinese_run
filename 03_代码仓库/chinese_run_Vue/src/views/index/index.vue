@@ -111,8 +111,8 @@ export default defineComponent({
       })
 </script>
 
-<style>
-.activity-container .ant-card-body{
+<style scoped>
+ .activity-container >>> .ant-card-body{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
