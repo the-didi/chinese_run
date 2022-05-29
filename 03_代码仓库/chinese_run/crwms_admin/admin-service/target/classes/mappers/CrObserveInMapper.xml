@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advgm.mapper.CrObserveInMapper">
+  <resultMap id="BaseResultMap" type="com.advgm.domain.CrObserveIn">
+    <!--@mbg.generated-->
+    <!--@Table cr_wms.cr_observe_in-->
+    <id column="id" property="id" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="modify_by" property="modifyBy" />
+    <result column="last_update_time" property="lastUpdateTime" />
+    <result column="tz_no" property="tzNo" />
+    <result column="g_host" property="gHost" />
+    <result column="arrive_time" property="arriveTime" />
+    <result column="c_no" property="cNo" />
+    <result column="tran_tel" property="tranTel" />
+    <result column="tran_company" property="tranCompany" />
+    <result column="gy_no" property="gyNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, create_by, create_time, modify_by, last_update_time, tz_no, g_host, arrive_time, 
+    c_no, tran_tel, tran_company, gy_no
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update cr_wms.cr_observe_in
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createBy}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createTime}
+        </foreach>
+      </trim>
+      <trim prefix="modify_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.modifyBy}
+        </foreach>
+      </trim>
+      <trim prefix="last_update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.lastUpdateTime}
+        </foreach>
+      </trim>
+      <trim prefix="tz_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.tzNo}
+        </foreach>
+      </trim>
+      <trim prefix="g_host = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gHost}
+        </foreach>
+      </trim>
+      <trim prefix="arrive_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.arriveTime}
+        </foreach>
+      </trim>
+      <trim prefix="c_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.cNo}
+        </foreach>
+      </trim>
+      <trim prefix="tran_tel = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.tranTel}
+        </foreach>
+      </trim>
+      <trim prefix="tran_company = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.tranCompany}
+        </foreach>
+      </trim>
+      <trim prefix="gy_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gyNo}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_observe_in
+    (id, create_by, create_time, modify_by, last_update_time, tz_no, g_host, arrive_time, 
+      c_no, tran_tel, tran_company, gy_no)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id}, #{item.createBy}, #{item.createTime}, #{item.modifyBy}, #{item.lastUpdateTime}, 
+        #{item.tzNo}, #{item.gHost}, #{item.arriveTime}, #{item.cNo}, #{item.tranTel}, 
+        #{item.tranCompany}, #{item.gyNo})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" parameterType="com.advgm.domain.CrObserveIn">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_observe_in
+    (id, create_by, create_time, modify_by, last_update_time, tz_no, g_host, arrive_time, 
+      c_no, tran_tel, tran_company, gy_no)
+    values
+    (#{id}, #{createBy}, #{createTime}, #{modifyBy}, #{lastUpdateTime}, #{tzNo}, #{gHost}, 
+      #{arriveTime}, #{cNo}, #{tranTel}, #{tranCompany}, #{gyNo})
+    on duplicate key update 
+    id = #{id}, 
+    create_by = #{createBy}, 
+    create_time = #{createTime}, 
+    modify_by = #{modifyBy}, 
+    last_update_time = #{lastUpdateTime}, 
+    tz_no = #{tzNo}, 
+    g_host = #{gHost}, 
+    arrive_time = #{arriveTime}, 
+    c_no = #{cNo}, 
+    tran_tel = #{tranTel}, 
+    tran_company = #{tranCompany}, 
+    gy_no = #{gyNo}
+  </insert>
+  <insert id="insertOrUpdateSelective" parameterType="com.advgm.domain.CrObserveIn">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_observe_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyBy != null">
+        modify_by,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+      <if test="tzNo != null">
+        tz_no,
+      </if>
+      <if test="gHost != null">
+        g_host,
+      </if>
+      <if test="arriveTime != null">
+        arrive_time,
+      </if>
+      <if test="cNo != null">
+        c_no,
+      </if>
+      <if test="tranTel != null">
+        tran_tel,
+      </if>
+      <if test="tranCompany != null">
+        tran_company,
+      </if>
+      <if test="gyNo != null">
+        gy_no,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="createBy != null">
+        #{createBy},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime},
+      </if>
+      <if test="tzNo != null">
+        #{tzNo},
+      </if>
+      <if test="gHost != null">
+        #{gHost},
+      </if>
+      <if test="arriveTime != null">
+        #{arriveTime},
+      </if>
+      <if test="cNo != null">
+        #{cNo},
+      </if>
+      <if test="tranTel != null">
+        #{tranTel},
+      </if>
+      <if test="tranCompany != null">
+        #{tranCompany},
+      </if>
+      <if test="gyNo != null">
+        #{gyNo},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="modifyBy != null">
+        modify_by = #{modifyBy},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime},
+      </if>
+      <if test="tzNo != null">
+        tz_no = #{tzNo},
+      </if>
+      <if test="gHost != null">
+        g_host = #{gHost},
+      </if>
+      <if test="arriveTime != null">
+        arrive_time = #{arriveTime},
+      </if>
+      <if test="cNo != null">
+        c_no = #{cNo},
+      </if>
+      <if test="tranTel != null">
+        tran_tel = #{tranTel},
+      </if>
+      <if test="tranCompany != null">
+        tran_company = #{tranCompany},
+      </if>
+      <if test="gyNo != null">
+        gy_no = #{gyNo},
+      </if>
+    </trim>
+  </insert>
+</mapper>
