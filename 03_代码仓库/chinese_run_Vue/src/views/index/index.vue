@@ -115,11 +115,12 @@ export default defineComponent({
  .activity-container >>> .ant-card-body{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
+  align-content: center;
 }
 
 #customerChart{
-    width: 450px;
+    width: 420px;
     height:350px; 
     margin-bottom: 20px
 }
@@ -131,7 +132,7 @@ export default defineComponent({
 }
 
 #Goods{
-     width:350px;
+     width:450px;
     height:350px; 
 }
 
