@@ -128,7 +128,7 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 			{
 				path:'/subscribe',
 				name: 'Order in',
-				component: ()=>import("/@/views/system/Otherstorage/index.vue"),
+				component: ()=>import("/@/views/system/subscribe/index.vue"),
 				meta:{
 					title: '预约进货'
 				}

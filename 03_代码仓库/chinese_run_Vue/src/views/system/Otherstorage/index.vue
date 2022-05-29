@@ -2,9 +2,9 @@
     <a-card class="activity-container">
         <!-- 查询部分开始 -->
         <div class="data-form">
-			<a-form name="menu_controllers" layout="inline" :model="roleController" @finish="onFinish">
-				<a-form-item name="roleName" label="角色名称">
-					<a-input v-model:value="roleController.name" allow-clear placeholder="输入订单编号查询" />
+			<a-form name="menu_controllers" layout="inline" :model="OtherController" @finish="onFinish">
+				<a-form-item name="subscribeName" label="货主">
+					<a-input v-model:value="OtherController.name" allow-clear placeholder="输入订单编号查询" />
 				</a-form-item>
 				<a-form-item>
 					<a-button type="primary" html-type="submit">
@@ -56,13 +56,16 @@
 			>
 			<vxe-column type="seq" width="60" title="#"></vxe-column>
 			<vxe-column type="checkbox" width="60"></vxe-column>
-			<vxe-column field="name" title="角色名称"></vxe-column>
-            <vxe-column field="code" title="角色编码"></vxe-column>
-			<vxe-column field="description" title="角色描述"></vxe-column>
-			<vxe-column field="status" title="状态"></vxe-column>
+			<vxe-column field="gHost" title="货主"></vxe-column>
+            <vxe-column field="tzNo" title="进货通知单号"></vxe-column>
+			<vxe-column field="arriveTime" title="预计到货时间"></vxe-column>
+			<vxe-column field="cNo" title="客户订单号"></vxe-column>
+			<vxe-column field="tranTel" title="运输号码"></vxe-column>
+			<vxe-column field="gyNo" title="供应商编号"></vxe-column>
+			<vxe-column field="tranCompany" title="运输公司"></vxe-column>
 			<vxe-column field="createBy" show-overflow title="创建人"></vxe-column>
 			<vxe-column field="modifyBy" title="修改人"></vxe-column>
-			<vxe-column field="created" show-overflow title="创建时间"></vxe-column>
+			<vxe-column field="createTime" show-overflow title="创建时间"></vxe-column>
 			<vxe-column field="lastUpdateTime" show-overflow title="修改时间"></vxe-column>
 			<vxe-column title="操作">
 				<template #default="{ row }">
@@ -76,9 +79,9 @@
         <!-- 分页模块开始 -->
 		<vxe-pager
 			background
-			v-model:current-page="roleController.currentPage"
-			v-model:page-size="roleController.pageSize"
-			:total="roleController.totalResult"
+			v-model:current-page="OtherController.currentPage"
+			v-model:page-size="OtherController.pageSize"
+			:total="OtherController.totalResult"
 			@page-change="handlePageChange"
 			:layouts="['PrevJump', 'PrevPage', 'JumpNumber', 'NextPage', 'NextJump', 'Sizes', 'FullJump', 'Total']"
 		>
@@ -91,7 +94,7 @@
 import { defineComponent,reactive,toRefs,ref, onMounted } from 'vue'
 import { Icon } from '/@/utils/antdIcon';
 import { VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
-import { findByPage } from '/@/api/system/role';
+import { findByPage } from '/@/api/system/Otherstorage';
 export default defineComponent({
     components:{
         Icon
@@ -99,7 +102,7 @@ export default defineComponent({
     setup() {
         const mainTable = ref({} as VxeTableInstance)
         const state=reactive({
-            roleController:{
+            OtherController:{
                 name:"",
                 currentPage: 1,
                 pageSize: 10,
@@ -142,10 +145,10 @@ export default defineComponent({
         const loadData=()=>{
             // 控制表格开始加载数据
             state.loading=true
-            findByPage(state.roleController).then(res=>{
-                state.roleController.currentPage=res.data.current
-                state.roleController.totalResult=res.data.total
-                state.roleController.pageSize=res.data.size
+            findByPage(state.OtherController).then(res=>{
+                state.OtherController.currentPage=res.data.current
+                state.OtherController.totalResult=res.data.total
+                state.OtherController.pageSize=res.data.size
                 state.dataSource=res.data.records
             }).finally(()=>{
                 state.loading=false
@@ -153,8 +156,8 @@ export default defineComponent({
         }
         // 控制分页切换
         const handlePageChange:VxePagerEvents.PageChange = ({ currentPage, pageSize })=>{
-			state.roleController.currentPage=currentPage
-			state.roleController.pageSize=pageSize
+			state.OtherController.currentPage=currentPage
+			state.OtherController.pageSize=pageSize
 			loadData()
 		}
         // 控制全选

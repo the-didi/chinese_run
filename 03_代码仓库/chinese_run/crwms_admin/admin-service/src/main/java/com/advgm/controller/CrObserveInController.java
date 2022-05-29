@@ -20,7 +20,7 @@ import java.util.List;
 * @author xxxxx
 */
 @RestController
-@RequestMapping("/observe_in")
+@RequestMapping("/subscribe")
 public class CrObserveInController {
 /**
 * 服务对象

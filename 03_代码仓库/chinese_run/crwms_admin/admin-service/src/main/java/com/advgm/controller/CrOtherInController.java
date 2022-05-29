@@ -20,7 +20,7 @@ import java.util.List;
 * @author xxxxx
 */
 @RestController
-@RequestMapping("/other_in")
+@RequestMapping("/otherstorage")
 public class CrOtherInController {
 /**
 * 服务对象
