@@ -8,34 +8,6 @@
                                         <a-input v-model:value="goodsController.hName" allow-clear
                                                 placeholder="输入货主姓名" />
                                 </a-form-item>
-                                <a-form-item name="reservoirCode" label="商品名称">
-                                        <a-input v-model:value="goodsController.gName" allow-clear
-                                                placeholder="请输入商品名称" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="英文名称">
-                                        <a-input v-model:value="goodsController.eName" allow-clear
-                                                placeholder="输入英文名称" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="商品编码">
-                                        <a-input v-model:value="goodsController.gNO" allow-clear
-                                                placeholder="输入商品编码" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="客户编码">
-                                        <a-input v-model:value="goodsController.cNO" allow-clear
-                                                placeholder="输入客户商品编码" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="产品属性">
-                                        <a-input v-model:value="goodsController.gProperties" allow-clear
-                                                placeholder="输入产品属性" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="商品类目">
-                                        <a-input v-model:value="goodsController.gCategory" allow-clear
-                                                placeholder="输入商品类目" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="商品条码">
-                                        <a-input v-model:value="goodsController.gTiaoma" allow-clear
-                                                placeholder="输入商品条码" />
-                                </a-form-item>
                                 <a-form-item>
                                         <a-button type="primary" html-type="submit" @click="search()">
                                                 <template #icon>
@@ -81,7 +53,7 @@
                         @checkbox-all="selectAllChangeEvent1" @checkbox-change="selectChangeEvent1">
                         <vxe-column type="seq" width="60" title="#"></vxe-column>
                         <vxe-column type="checkbox" width="60"></vxe-column>
-                        <vxe-column field="hName" title="所属货主"></vxe-column>
+                        <vxe-column field="gName" title="所属货主"></vxe-column>
                         <vxe-column field="gName" title="商品名称"></vxe-column>
                         <vxe-column field="eName" title="英文名字"></vxe-column>
                         <vxe-column field="gNo" title="商品编码"></vxe-column>
@@ -106,10 +78,11 @@
                 </vxe-pager>
                 <!-- 分页模块结束 -->
                 <!-- 编辑弹窗开始 -->
-                <a-modal v-model:visible="editGoodsVisible" title="编辑商品信息" cancelText="取消" okText="确定" @ok="handleEditOk">
+                <a-modal v-model:visible="editGoodsVisible" title="编辑商品信息" cancelText="取消" okText="确定"
+                        @ok="handleEditOk">
                         <a-form name="driver_add_controllers" :model="goodsEditController" @finish="onAddFinish">
                                 <a-form-item name="driverName" label="货主姓名">
-                                        <a-input v-model:value="goodsEditController.hName" allow-clear />
+                                        <a-input v-model:value="goodsEditController.gName" allow-clear />
                                 </a-form-item>
                                 <a-form-item name="driverName" label="商品名称">
                                         <a-input v-model:value="goodsEditController.gName" allow-clear />
@@ -179,7 +152,7 @@ import { defineComponent, reactive, toRefs, ref, onMounted } from 'vue';
 import { Icon } from '/@/utils/antdIcon';
 import { VxeTableInstance, VxeTableEvents, VxePagerEvents } from 'vxe-table';
 import { message } from 'ant-design-vue';
-import {findByPage} from '/@/api/base/goods/index'
+import { findByPage,findByName,getById,deleteById,updateGoods,addGoods } from '/@/api/base/goods/index'
 export default defineComponent({
         components: {
                 Icon
@@ -198,33 +171,29 @@ export default defineComponent({
                         editGoodsVisible: false,
                         addGoodsVisible: false,
                         goodsEditController: [
-                                 {     
-                                        hName:'测试',
-                                        gName:'测试',
-                                        eName:'测试',
-                                        gNO:'1111',
-                                        cNO:'11111',
-                                        gGuige:'测试',
-                                        gProperties:'测试',
-                                        gCategory:'测试',
-                                        zl:'否'
-
-
+                                {
+                                        hName: '测试',
+                                        gName: '测试',
+                                        eName: '测试',
+                                        gNO: '1111',
+                                        cNO: '11111',
+                                        gGuige: '测试',
+                                        gProperties: '测试',
+                                        gCategory: '测试',
+                                        zl: '否'
                                 }]
                         ,
                         goodsAddController: [
-                                 {       
-                                        hName:'',
-                                        gName:'',
-                                        eName:'',
-                                        gNO:'',
-                                        cNO:'',
-                                        gGuige:'',
-                                        gProperties:'',
-                                        gCategory:'',
-                                        zl:''
-
-
+                                {
+                                        hName: '',
+                                        gName: '',
+                                        eName: '',
+                                        gNO: '',
+                                        cNO: '',
+                                        gGuige: '',
+                                        gProperties: '',
+                                        gCategory: '',
+                                        zl: ''
                                 }
 
                         ]
@@ -234,18 +203,18 @@ export default defineComponent({
                         loadData()
                 })
                 const handleAdd = () => {
-                                state.addGoodsVisible = true
+                        state.addGoodsVisible = true
                 }
                 const loadData = () => {
-                                  state.loading=true
-            findByPage(state.goodsController).then(res=>{
-                state.dataSource=res.data.records
-                state.goodsController.current=res.data.current
-                state.goodsController.size=res.data.size
-                state.goodsController.totalResult=res.data.total
-            }).finally(()=>{
-                state.loading=false
-            })
+                        state.loading = true
+                        findByPage(state.goodsController).then(res => {
+                                state.dataSource = res.data.records
+                                state.goodsController.current = res.data.current
+                                state.goodsController.size = res.data.size
+                                state.goodsController.totalResult = res.data.total
+                        }).finally(() => {
+                                state.loading = false
+                        })
                 }
                 const handleBatchDelete = () => {
 
@@ -265,15 +234,22 @@ export default defineComponent({
                         const $table = mainTable.value;
                         state.selectedRowKeys = $table.getCheckboxRecords();
                 };
-                const handleEdit = () => {
-                                // 单击时让添加菜单显示
-                                state.editGoodsVisible=true;
+                const handleEdit = (row:any) => {
+                        // 单击时让添加菜单显示
+                        state.editGoodsVisible = true
+                        getById({id:row.id}).then(res=>{
+                                state.goodsEditController=res.data
+                                console.log(res)
+                        })
+                  
                 }
                 const handleMenuClick = () => {
 
                 }
                 const handlePageChange: VxePagerEvents.PageChange = ({ currentPage, pageSize }) => {
-
+                        state.goodsController.current=currentPage
+                        state.goodsController.size = pageSize
+			loadData()
                 };
                 return {
                         ...toRefs(state),
