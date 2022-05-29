@@ -3,7 +3,7 @@
         <!-- 查询部分开始 -->
         <div class="data-form">
 			<a-form name="menu_controllers" layout="inline" :model="OtherController" @finish="onFinish">
-				<a-form-item name="subscribeName" label="货主">
+				<a-form-item name="subscribeName" label="进货通知单号">
 					<a-input v-model:value="OtherController.name" allow-clear placeholder="输入订单编号查询" />
 				</a-form-item>
 				<a-form-item>
@@ -56,13 +56,11 @@
 			>
 			<vxe-column type="seq" width="60" title="#"></vxe-column>
 			<vxe-column type="checkbox" width="60"></vxe-column>
-			<vxe-column field="gHost" title="货主"></vxe-column>
             <vxe-column field="tzNo" title="进货通知单号"></vxe-column>
 			<vxe-column field="arriveTime" title="预计到货时间"></vxe-column>
-			<vxe-column field="cNo" title="客户订单号"></vxe-column>
-			<vxe-column field="tranTel" title="运输号码"></vxe-column>
-			<vxe-column field="gyNo" title="供应商编号"></vxe-column>
-			<vxe-column field="tranCompany" title="运输公司"></vxe-column>
+			<vxe-column field="carId" title="车牌号"></vxe-column>
+			<vxe-column field="driverTel" title="司机电话号码"></vxe-column>
+			<vxe-column field="order_category" title="货物种类"></vxe-column>
 			<vxe-column field="createBy" show-overflow title="创建人"></vxe-column>
 			<vxe-column field="modifyBy" title="修改人"></vxe-column>
 			<vxe-column field="createTime" show-overflow title="创建时间"></vxe-column>

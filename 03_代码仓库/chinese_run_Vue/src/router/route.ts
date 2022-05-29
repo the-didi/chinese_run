@@ -90,7 +90,7 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				name: 'Role',
 				component: ()=>import('/@/views/system/role/index.vue'),
 				meta: {
-					title: '权限管理'
+					title: '角色管理'
 				}
 			},
 			{
@@ -118,17 +118,9 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				}
 			},
 			{
-				path:'/Purchase',
-				name: 'CustomerPuchase',
-				component: ()=>import("/@/views/system/CustomerPurchase/index.vue"),
-				meta:{
-					title: '客户进货'
-				}
-			},
-			{
-				path:'/subscribe',
+				path:'/observe',
 				name: 'Order in',
-				component: ()=>import("/@/views/system/subscribe/index.vue"),
+				component: ()=>import("/@/views/system/observe/index.vue"),
 				meta:{
 					title: '预约进货'
 				}
