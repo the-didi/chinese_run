@@ -466,10 +466,10 @@
     "@typescript-eslint/types" "5.20.0"
     "eslint-visitor-keys" "^3.0.0"
 
-"@vitejs/plugin-vue@^2.3.0":
-  "integrity" "sha512-YNzBt8+jt6bSwpt7LP890U1UcTOIZZxfpE5WOJ638PNxSEKOqAi0+FSKS0nVeukfdZ0Ai/H7AFd6k3hayfGZqQ=="
-  "resolved" "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-2.3.1.tgz"
-  "version" "2.3.1"
+"@vitejs/plugin-vue@^2.3.3":
+  "integrity" "sha512-SmQLDyhz+6lGJhPELsBdzXGc+AcaT8stgkbiTFGpXPe8Tl1tJaBw1A6pxDqDuRsVkD8uscrkx3hA7QDOoKYtyw=="
+  "resolved" "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-2.3.3.tgz"
+  "version" "2.3.3"
 
 "@volar/code-gen@0.34.7":
   "integrity" "sha512-E1N1VGlChXd0D7WPmmjKhtcZdUKNpBFC4BRqfY+7FZGh89FZlw3uG6Nn76/DjMBLVhfCIY9vA8pwWIN1lI8nYw=="
