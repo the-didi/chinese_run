@@ -12,7 +12,7 @@
         <option name="generateService" value="true" />
         <option name="generateServiceInterface" value="true" />
         <option name="insertOnDuplicateKey" value="true" />
-        <option name="javaControllerPackage" value="com.advgm" />
+        <option name="javaControllerPackage" value="com.advgm.controller" />
         <option name="javaMapperPackage" value="com.advgm.mapper" />
         <option name="javaMapperPath" value="$PROJECT_DIR$/crwms_admin/admin-service/src/main/java" />
         <option name="javaModelPackage" value="com.advgm.domain" />
@@ -32,9 +32,9 @@
                   <option name="javaMapperPath" value="$PROJECT_DIR$/crwms_admin/admin-service/src/main/java" />
                   <option name="javaModelPacakge" value="com.advgm.domain" />
                   <option name="javaModelPath" value="$PROJECT_DIR$/crwms_admin/admin-service/src/main/java" />
-                  <option name="javaServiceInterfacePackage" value="com.advgm.service.impl" />
+                  <option name="javaServiceInterfacePackage" value="com.advgm.service" />
                   <option name="javaServiceInterfacePath" value="$PROJECT_DIR$/crwms_admin/admin-service/src/main/java" />
-                  <option name="javaServicePackage" value="com.advgm.service" />
+                  <option name="javaServicePackage" value="com.advgm.service.impl" />
                   <option name="javaServicePath" value="$PROJECT_DIR$/crwms_admin/admin-service/src/main/java" />
                   <option name="xmlPackage" value="mapper" />
                   <option name="xmlPath" value="$PROJECT_DIR$/crwms_admin/admin-service/src/main/resources" />
@@ -130,6 +130,36 @@
                   <option name="generatedKey" value="" />
                   <option name="insertOnDuplicateKey" value="true" />
                   <option name="javaModelName" value="CrGoodsType" />
+                  <option name="moduleName" value="admin-service" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="cr_wms:cr_observe_in">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="CrObserveIn" />
+                  <option name="moduleName" value="admin-service" />
+                  <option name="sequenceColumn" value="" />
+                  <option name="sequenceId" value="" />
+                  <option name="updateBatch" value="true" />
+                  <option name="useActualColumnName" value="false" />
+                </TableGenerateConfig>
+              </value>
+            </entry>
+            <entry key="cr_wms:cr_other_in">
+              <value>
+                <TableGenerateConfig>
+                  <option name="batchInsert" value="true" />
+                  <option name="generatedKey" value="id" />
+                  <option name="insertOnDuplicateKey" value="true" />
+                  <option name="javaModelName" value="CrOtherIn" />
                   <option name="moduleName" value="admin-service" />
                   <option name="sequenceColumn" value="" />
                   <option name="sequenceId" value="" />
