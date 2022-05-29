@@ -179,6 +179,7 @@ import { defineComponent, reactive, toRefs, ref, onMounted } from 'vue';
 import { Icon } from '/@/utils/antdIcon';
 import { VxeTableInstance, VxeTableEvents, VxePagerEvents } from 'vxe-table';
 import { message } from 'ant-design-vue';
+import {findByPage} from '/@/api/base/goods/index'
 export default defineComponent({
         components: {
                 Icon
@@ -191,22 +192,7 @@ export default defineComponent({
                                 size: 10,
                                 totalResult: 0
                         },
-                        dataSource: [
-                                {       
-                                        hName:'测试',
-                                        gName:'测试',
-                                        eName:'测试',
-                                        gNO:'1111',
-                                        cNO:'11111',
-                                        gGuige:'测试',
-                                        gProperties:'测试',
-                                        gCategory:'测试',
-                                        zl:'否'
-
-
-                                }
-
-                        ],
+                        dataSource: [],
                         loading: false,
                         selectedRowKeys: [],
                         editGoodsVisible: false,
@@ -251,7 +237,15 @@ export default defineComponent({
                                 state.addGoodsVisible = true
                 }
                 const loadData = () => {
-
+                                  state.loading=true
+            findByPage(state.goodsController).then(res=>{
+                state.dataSource=res.data.records
+                state.goodsController.current=res.data.current
+                state.goodsController.size=res.data.size
+                state.goodsController.totalResult=res.data.total
+            }).finally(()=>{
+                state.loading=false
+            })
                 }
                 const handleBatchDelete = () => {
 

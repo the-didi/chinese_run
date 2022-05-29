@@ -3,7 +3,6 @@ package com.advgm.controller;
 
 
 import com.advgm.domain.Order;
-import com.advgm.domain.SysMenu;
 import com.advgm.model.R;
 import com.advgm.service.OrderService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -87,5 +86,9 @@ public class OrderController {
             return R.fail("新增失败");
         }
     }
+    @GetMapping("/getOrderId")
+  public    R<List<Order>> getOrderId(){
+        return R.ok(orderService.getOrderId());
+  }
 
 }

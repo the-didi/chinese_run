@@ -8,18 +8,6 @@
                                         <a-input v-model:value="goodsDetaisController.hName" allow-clear
                                                 placeholder="输入货主姓名" />
                                 </a-form-item>
-                                <a-form-item name="reservoirCode" label="商品编码">
-                                        <a-input v-model:value="goodsDetaisController.gNO" allow-clear
-                                                placeholder="输入商品编码" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="商品SKU">
-                                        <a-input v-model:value="goodsDetaisController.gSKU" allow-clear
-                                                placeholder="输入商品SKU" />
-                                </a-form-item>
-                                <a-form-item name="reservoirCode" label="品名">
-                                        <a-input v-model:value="goodsDetaisController.gName" allow-clear
-                                                placeholder="输入品名" />
-                                </a-form-item>
                                 <a-form-item>
                                         <a-button type="primary" html-type="submit" @click="search()">
                                                 <template #icon>

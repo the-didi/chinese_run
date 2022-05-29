@@ -63,10 +63,12 @@
 			<vxe-column field="carId" title="车牌号"></vxe-column>
 			<vxe-column field="created" show-overflow title="创建时间"></vxe-column>
 			<vxe-column field="lastUpdateTime" show-overflow title="修改时间"></vxe-column>
-			<vxe-column width="150px" title="操作">
+			<vxe-column field="orderId" show-overflow title="订单号"></vxe-column>
+			<vxe-column width="250px" title="操作">
 				<template #default="{ row }">
 					<a-button type="link" @click="handleEdit(row)">编辑</a-button>
 					<a-button type="link" @click="handleDel(row)">删除</a-button>
+					<a-button type="link" @click="handle()">派订单</a-button>
 				</template>
 			</vxe-column>
 		</vxe-table>
@@ -125,6 +127,22 @@
 				</a-form>
 		</a-modal>
 		<!-- 编辑弹窗结束 -->
+		<!-- 派订单弹窗开始 -->
+		<!-- 此处按照正常逻辑来说要提出来一个组件 不过我懒了 -->
+		<a-modal v-model:visible="paiSongVisible" title="派送订单" cancelText="取消" okText="确定" @ok="paiSongOk">
+			<a-form name="paiSong" :model="order" @finish="onAddFinish">
+				<a-form-item name="orderId" label="订单号">
+					<a-select v-model:value="driver.orderId" allow-clear placeholder="请选择订单号" style="width:180px">
+					<template v-for="(item,index) in order" :key="index">
+						<a-select-option :value="order[index].orderId">{{order[index].orderId}}</a-select-option>
+					</template>
+	
+						
+					</a-select>
+				</a-form-item>
+			</a-form>
+		</a-modal>
+		<!-- 派订单结束 -->
     </a-card>
 </template>
 <script lang="ts">
@@ -132,7 +150,7 @@ import { defineComponent, reactive,toRefs,ref, onMounted } from 'vue'
 import { VxeTableInstance, VxeTableEvents,VxePagerEvents  } from 'vxe-table'
 import { Icon } from '/@/utils/antdIcon';
 import { message } from 'ant-design-vue';
-import {findByPage,getDriverById,updateDriver,deleteDriver,addDriver,getDriverByName} from '/@/api/system/driver'
+import {findByPage,getDriverById,updateDriver,deleteDriver,addDriver,getDriverByName,getOrderId} from '/@/api/system/driver'
 export default defineComponent({
     components: {
         Icon
@@ -145,18 +163,24 @@ export default defineComponent({
                 size:10,
                 totalResult: 0
             },
+			order:[],
             dataSource: [],
             loading: false,
             selectedRowKeys: [],
 			editMenuVisible : false,
 			driverEditController:{},
 			addDriverVisible:false,
+			paiSongVisible:false,
 			driverAddController:{
 				name:'',
 				sex:'',
 				age:'',
 				carId:'',
 				tel:''
+			},
+			driver:{
+				orderId:''
+			
 			}
 			
         })
@@ -256,6 +280,20 @@ export default defineComponent({
 					state.driverAddController.name = ''
 				})
 		}
+		const handle=()=>{
+			
+
+state.paiSongVisible=true
+			getOrderId().then(res=>{
+				
+				state.order =res.data
+				console.log(state.order)
+			})
+		}
+		const paiSongOk = ()=>{
+			message.success('派单成功')
+			state.paiSongVisible = false
+		}
         return {
             ...toRefs(state),
             onFinish,
@@ -269,7 +307,9 @@ export default defineComponent({
             mainTable,
             selectChangeEvent1,
             handleAdd,
-			search
+			search,
+			handle,
+			paiSongOk
         }
     },
 })

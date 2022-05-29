@@ -5,6 +5,7 @@ import com.advgm.domain.Order;
 import com.advgm.mapper.OrderMapper;
 import com.advgm.service.OrderService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,5 +81,12 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     @Override
     public int insertOrder(Order order) {
         return orderMapper.insert(order);
+    }
+
+    @Override
+    public List<Order> getOrderId() {
+        QueryWrapper<Order> orderQueryWrapper = new QueryWrapper<>();
+        orderQueryWrapper.eq("order_status","未派单");
+        return orderMapper.selectList(orderQueryWrapper);
     }
 }

@@ -60,7 +60,7 @@ public class CrBaseGoodsServiceImpl extends ServiceImpl<CrBaseGoodsMapper, CrBas
     @Override
     public List<CrBaseGoods> getCrBaseGoodsByName(String name) {
         QueryWrapper<CrBaseGoods> wrapper = new QueryWrapper<>();
-        wrapper.eq("h_name",name);
+        wrapper.eq("g_name",name);
         return crBaseGoodsMapper.selectList(wrapper);
     }
 }

@@ -3,6 +3,8 @@ package com.advgm.service;
 import com.advgm.domain.Order;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
+import java.util.List;
+
 
 /**
  * @author qiumin
@@ -14,4 +16,6 @@ public interface OrderService {
     int deleteOrderByIds(Long id);
     int updateOrderById(Order order);
     int insertOrder(Order order);
+//    查询未派送得订单
+    List<Order> getOrderId();
 }

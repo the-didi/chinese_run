@@ -2,7 +2,6 @@ package com.advgm.controller;
 import com.advgm.domain.CrBaseGoods;
 import com.advgm.domain.Driver;
 import com.advgm.model.R;
-import com.advgm.service.DriverService;
 import com.advgm.service.CrBaseGoodsService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
@@ -49,7 +48,7 @@ private CrBaseGoodsService crBaseGoodsService;
         return R.ok(byId);
     };
     @GetMapping("/getByName")
-    public List<CrBaseGoods> getByName(String name){
-        return crBaseGoodsService.getCrBaseGoodsByName(name);
+    public  R <List<CrBaseGoods>> getByName(String name){
+        return R.ok(crBaseGoodsService.getCrBaseGoodsByName(name));
     }
 }
