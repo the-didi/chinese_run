@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advgm.mapper.CrTenantMapper">
+  <resultMap id="BaseResultMap" type="com.advgm.domain.CrTenant">
+    <!--@mbg.generated-->
+    <!--@Table cr_wms.cr_tenant-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tenant_no" jdbcType="VARCHAR" property="tenantNo" />
+    <result column="tenant_name" jdbcType="VARCHAR" property="tenantName" />
+    <result column="tenant_email" jdbcType="VARCHAR" property="tenantEmail" />
+    <result column="tenant_username" jdbcType="VARCHAR" property="tenantUsername" />
+    <result column="tenant_password" jdbcType="VARCHAR" property="tenantPassword" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="modify_by" jdbcType="VARCHAR" property="modifyBy" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, tenant_no, tenant_name, tenant_email, tenant_username, tenant_password, create_by, 
+    modify_by, created, last_update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update cr_wms.cr_tenant
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tenant_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantNo,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantName,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant_email = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantEmail,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant_username = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantUsername,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="tenant_password = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.tenantPassword,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="modify_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.modifyBy,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="created = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.created,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="last_update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.lastUpdateTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" parameterType="map">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_tenant
+    (id, tenant_no, tenant_name, tenant_email, tenant_username, tenant_password, create_by, 
+      modify_by, created, last_update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.id,jdbcType=BIGINT}, #{item.tenantNo,jdbcType=VARCHAR}, #{item.tenantName,jdbcType=VARCHAR}, 
+        #{item.tenantEmail,jdbcType=VARCHAR}, #{item.tenantUsername,jdbcType=VARCHAR}, 
+        #{item.tenantPassword,jdbcType=VARCHAR}, #{item.createBy,jdbcType=VARCHAR}, #{item.modifyBy,jdbcType=VARCHAR}, 
+        #{item.created,jdbcType=TIMESTAMP}, #{item.lastUpdateTime,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://122.112.216.217:3306/cr_wms?serverTimezone=UTC</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="wms@122.112.216.217" uuid="4593201d-800a-45d0-a8c9-ec475ea0cabb">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://122.112.216.217:3306/wms?serverTimezone=UTC</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
