@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advgm.mapper.CrGoodsDetailsMapper">
+  <resultMap id="BaseResultMap" type="com.advgm.domain.CrGoodsDetails">
+    <!--@mbg.generated-->
+    <!--@Table cr_wms.cr_goods_details-->
+    <id column="id" property="id" />
+    <result column="g_name" property="gName" />
+    <result column="g_no" property="gNo" />
+    <result column="g_SKU" property="gSku" />
+    <result column="p_name" property="pName" />
+    <result column="j_category" property="jCategory" />
+    <result column="unit" property="unit" />
+    <result column="cunfangwencheng" property="cunfangwencheng" />
+    <result column="id_dangcheng" property="idDangcheng" />
+    <result column="height" property="height" />
+    <result column="baozhiqi" property="baozhiqi" />
+    <result column="tiji" property="tiji" />
+    <result column="weight" property="weight" />
+    <result column="zl_number" property="zlNumber" />
+    <result column="g_property" property="gProperty" />
+    <result column="base_unit" property="baseUnit" />
+    <result column="create_by" property="createBy" />
+    <result column="telent_id" property="telentId" />
+    <result column="create_time" property="createTime" />
+    <result column="modify_by" property="modifyBy" />
+    <result column="update_time" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, g_name, g_no, g_SKU, p_name, j_category, unit, cunfangwencheng, id_dangcheng, 
+    height, baozhiqi, tiji, weight, zl_number, g_property, base_unit, create_by, telent_id, 
+    create_time, modify_by, update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update cr_wms.cr_goods_details
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="g_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gName}
+        </foreach>
+      </trim>
+      <trim prefix="g_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gNo}
+        </foreach>
+      </trim>
+      <trim prefix="g_SKU = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gSku}
+        </foreach>
+      </trim>
+      <trim prefix="p_name = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.pName}
+        </foreach>
+      </trim>
+      <trim prefix="j_category = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.jCategory}
+        </foreach>
+      </trim>
+      <trim prefix="unit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.unit}
+        </foreach>
+      </trim>
+      <trim prefix="cunfangwencheng = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.cunfangwencheng}
+        </foreach>
+      </trim>
+      <trim prefix="id_dangcheng = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.idDangcheng}
+        </foreach>
+      </trim>
+      <trim prefix="height = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.height}
+        </foreach>
+      </trim>
+      <trim prefix="baozhiqi = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.baozhiqi}
+        </foreach>
+      </trim>
+      <trim prefix="tiji = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.tiji}
+        </foreach>
+      </trim>
+      <trim prefix="weight = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.weight}
+        </foreach>
+      </trim>
+      <trim prefix="zl_number = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.zlNumber}
+        </foreach>
+      </trim>
+      <trim prefix="g_property = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.gProperty}
+        </foreach>
+      </trim>
+      <trim prefix="base_unit = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.baseUnit}
+        </foreach>
+      </trim>
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createBy}
+        </foreach>
+      </trim>
+      <trim prefix="telent_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.telentId}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createTime}
+        </foreach>
+      </trim>
+      <trim prefix="modify_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.modifyBy}
+        </foreach>
+      </trim>
+      <trim prefix="update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.updateTime}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_goods_details
+    (g_name, g_no, g_SKU, p_name, j_category, unit, cunfangwencheng, id_dangcheng, height, 
+      baozhiqi, tiji, weight, zl_number, g_property, base_unit, create_by, telent_id, 
+      create_time, modify_by, update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.gName}, #{item.gNo}, #{item.gSku}, #{item.pName}, #{item.jCategory}, #{item.unit}, 
+        #{item.cunfangwencheng}, #{item.idDangcheng}, #{item.height}, #{item.baozhiqi}, 
+        #{item.tiji}, #{item.weight}, #{item.zlNumber}, #{item.gProperty}, #{item.baseUnit}, 
+        #{item.createBy}, #{item.telentId}, #{item.createTime}, #{item.modifyBy}, #{item.updateTime}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.advgm.domain.CrGoodsDetails" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_goods_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      g_name,
+      g_no,
+      g_SKU,
+      p_name,
+      j_category,
+      unit,
+      cunfangwencheng,
+      id_dangcheng,
+      height,
+      baozhiqi,
+      tiji,
+      weight,
+      zl_number,
+      g_property,
+      base_unit,
+      create_by,
+      telent_id,
+      create_time,
+      modify_by,
+      update_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      #{gName},
+      #{gNo},
+      #{gSku},
+      #{pName},
+      #{jCategory},
+      #{unit},
+      #{cunfangwencheng},
+      #{idDangcheng},
+      #{height},
+      #{baozhiqi},
+      #{tiji},
+      #{weight},
+      #{zlNumber},
+      #{gProperty},
+      #{baseUnit},
+      #{createBy},
+      #{telentId},
+      #{createTime},
+      #{modifyBy},
+      #{updateTime},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      g_name = #{gName},
+      g_no = #{gNo},
+      g_SKU = #{gSku},
+      p_name = #{pName},
+      j_category = #{jCategory},
+      unit = #{unit},
+      cunfangwencheng = #{cunfangwencheng},
+      id_dangcheng = #{idDangcheng},
+      height = #{height},
+      baozhiqi = #{baozhiqi},
+      tiji = #{tiji},
+      weight = #{weight},
+      zl_number = #{zlNumber},
+      g_property = #{gProperty},
+      base_unit = #{baseUnit},
+      create_by = #{createBy},
+      telent_id = #{telentId},
+      create_time = #{createTime},
+      modify_by = #{modifyBy},
+      update_time = #{updateTime},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.advgm.domain.CrGoodsDetails" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_goods_details
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="gName != null">
+        g_name,
+      </if>
+      <if test="gNo != null">
+        g_no,
+      </if>
+      <if test="gSku != null">
+        g_SKU,
+      </if>
+      <if test="pName != null">
+        p_name,
+      </if>
+      <if test="jCategory != null">
+        j_category,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="cunfangwencheng != null">
+        cunfangwencheng,
+      </if>
+      <if test="idDangcheng != null">
+        id_dangcheng,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="baozhiqi != null">
+        baozhiqi,
+      </if>
+      <if test="tiji != null">
+        tiji,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="zlNumber != null">
+        zl_number,
+      </if>
+      <if test="gProperty != null">
+        g_property,
+      </if>
+      <if test="baseUnit != null">
+        base_unit,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="telentId != null">
+        telent_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyBy != null">
+        modify_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="gName != null">
+        #{gName},
+      </if>
+      <if test="gNo != null">
+        #{gNo},
+      </if>
+      <if test="gSku != null">
+        #{gSku},
+      </if>
+      <if test="pName != null">
+        #{pName},
+      </if>
+      <if test="jCategory != null">
+        #{jCategory},
+      </if>
+      <if test="unit != null">
+        #{unit},
+      </if>
+      <if test="cunfangwencheng != null">
+        #{cunfangwencheng},
+      </if>
+      <if test="idDangcheng != null">
+        #{idDangcheng},
+      </if>
+      <if test="height != null">
+        #{height},
+      </if>
+      <if test="baozhiqi != null">
+        #{baozhiqi},
+      </if>
+      <if test="tiji != null">
+        #{tiji},
+      </if>
+      <if test="weight != null">
+        #{weight},
+      </if>
+      <if test="zlNumber != null">
+        #{zlNumber},
+      </if>
+      <if test="gProperty != null">
+        #{gProperty},
+      </if>
+      <if test="baseUnit != null">
+        #{baseUnit},
+      </if>
+      <if test="createBy != null">
+        #{createBy},
+      </if>
+      <if test="telentId != null">
+        #{telentId},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="gName != null">
+        g_name = #{gName},
+      </if>
+      <if test="gNo != null">
+        g_no = #{gNo},
+      </if>
+      <if test="gSku != null">
+        g_SKU = #{gSku},
+      </if>
+      <if test="pName != null">
+        p_name = #{pName},
+      </if>
+      <if test="jCategory != null">
+        j_category = #{jCategory},
+      </if>
+      <if test="unit != null">
+        unit = #{unit},
+      </if>
+      <if test="cunfangwencheng != null">
+        cunfangwencheng = #{cunfangwencheng},
+      </if>
+      <if test="idDangcheng != null">
+        id_dangcheng = #{idDangcheng},
+      </if>
+      <if test="height != null">
+        height = #{height},
+      </if>
+      <if test="baozhiqi != null">
+        baozhiqi = #{baozhiqi},
+      </if>
+      <if test="tiji != null">
+        tiji = #{tiji},
+      </if>
+      <if test="weight != null">
+        weight = #{weight},
+      </if>
+      <if test="zlNumber != null">
+        zl_number = #{zlNumber},
+      </if>
+      <if test="gProperty != null">
+        g_property = #{gProperty},
+      </if>
+      <if test="baseUnit != null">
+        base_unit = #{baseUnit},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy},
+      </if>
+      <if test="telentId != null">
+        telent_id = #{telentId},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="modifyBy != null">
+        modify_by = #{modifyBy},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime},
+      </if>
+    </trim>
+  </insert>
+</mapper>

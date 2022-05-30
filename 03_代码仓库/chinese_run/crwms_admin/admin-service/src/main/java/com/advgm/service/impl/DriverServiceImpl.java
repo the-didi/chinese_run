@@ -22,9 +22,9 @@ import java.util.List;
 @Service
 public class DriverServiceImpl extends ServiceImpl<DriverMapper,Driver> implements DriverService {
     @Override
-    public Page<Driver> queryAllDrivers(Page<Driver> page) {
-        return page(page,new LambdaQueryWrapper<Driver>());
-    }
+public Page<Driver> queryAllDrivers(Page<Driver> page) {
+    return page(page,new LambdaQueryWrapper<Driver>());
+}
     @Autowired
     private DriverMapper driverMapper;
     @Override

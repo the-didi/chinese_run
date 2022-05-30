@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.advgm.mapper.CrOtherInMapper">
+  <resultMap id="BaseResultMap" type="com.advgm.domain.CrOtherIn">
+    <!--@mbg.generated-->
+    <!--@Table cr_wms.cr_other_in-->
+    <id column="id" property="id" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="tz_no" property="tzNo" />
+    <result column="tetant_id" property="tetantId" />
+    <result column="arrive_time" property="arriveTime" />
+    <result column="k_no" property="kNo" />
+    <result column="car_id" property="carId" />
+    <result column="driver_tel" property="driverTel" />
+    <result column="order_category" property="orderCategory" />
+    <result column="modify_by" property="modifyBy" />
+    <result column="last_update_time" property="lastUpdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, create_by, create_time, tz_no, tetant_id, arrive_time, k_no, car_id, driver_tel, 
+    order_category, modify_by, last_update_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update cr_wms.cr_other_in
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="create_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createBy}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.createTime}
+        </foreach>
+      </trim>
+      <trim prefix="tz_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.tzNo}
+        </foreach>
+      </trim>
+      <trim prefix="tetant_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.tetantId}
+        </foreach>
+      </trim>
+      <trim prefix="arrive_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.arriveTime}
+        </foreach>
+      </trim>
+      <trim prefix="k_no = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.kNo}
+        </foreach>
+      </trim>
+      <trim prefix="car_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.carId}
+        </foreach>
+      </trim>
+      <trim prefix="driver_tel = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.driverTel}
+        </foreach>
+      </trim>
+      <trim prefix="order_category = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.orderCategory}
+        </foreach>
+      </trim>
+      <trim prefix="modify_by = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.modifyBy}
+        </foreach>
+      </trim>
+      <trim prefix="last_update_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id} then #{item.lastUpdateTime}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_other_in
+    (create_by, create_time, tz_no, tetant_id, arrive_time, k_no, car_id, driver_tel, 
+      order_category, modify_by, last_update_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.createBy}, #{item.createTime}, #{item.tzNo}, #{item.tetantId}, #{item.arriveTime}, 
+        #{item.kNo}, #{item.carId}, #{item.driverTel}, #{item.orderCategory}, #{item.modifyBy}, 
+        #{item.lastUpdateTime})
+    </foreach>
+  </insert>
+  <insert id="insertOrUpdate" keyColumn="id" keyProperty="id" parameterType="com.advgm.domain.CrOtherIn" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_other_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      create_by,
+      create_time,
+      tz_no,
+      tetant_id,
+      arrive_time,
+      k_no,
+      car_id,
+      driver_tel,
+      order_category,
+      modify_by,
+      last_update_time,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      #{createBy},
+      #{createTime},
+      #{tzNo},
+      #{tetantId},
+      #{arriveTime},
+      #{kNo},
+      #{carId},
+      #{driverTel},
+      #{orderCategory},
+      #{modifyBy},
+      #{lastUpdateTime},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      create_by = #{createBy},
+      create_time = #{createTime},
+      tz_no = #{tzNo},
+      tetant_id = #{tetantId},
+      arrive_time = #{arriveTime},
+      k_no = #{kNo},
+      car_id = #{carId},
+      driver_tel = #{driverTel},
+      order_category = #{orderCategory},
+      modify_by = #{modifyBy},
+      last_update_time = #{lastUpdateTime},
+    </trim>
+  </insert>
+  <insert id="insertOrUpdateSelective" keyColumn="id" keyProperty="id" parameterType="com.advgm.domain.CrOtherIn" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cr_wms.cr_other_in
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="tzNo != null">
+        tz_no,
+      </if>
+      <if test="tetantId != null">
+        tetant_id,
+      </if>
+      <if test="arriveTime != null">
+        arrive_time,
+      </if>
+      <if test="kNo != null">
+        k_no,
+      </if>
+      <if test="carId != null">
+        car_id,
+      </if>
+      <if test="driverTel != null">
+        driver_tel,
+      </if>
+      <if test="orderCategory != null">
+        order_category,
+      </if>
+      <if test="modifyBy != null">
+        modify_by,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="createBy != null">
+        #{createBy},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="tzNo != null">
+        #{tzNo},
+      </if>
+      <if test="tetantId != null">
+        #{tetantId},
+      </if>
+      <if test="arriveTime != null">
+        #{arriveTime},
+      </if>
+      <if test="kNo != null">
+        #{kNo},
+      </if>
+      <if test="carId != null">
+        #{carId},
+      </if>
+      <if test="driverTel != null">
+        #{driverTel},
+      </if>
+      <if test="orderCategory != null">
+        #{orderCategory},
+      </if>
+      <if test="modifyBy != null">
+        #{modifyBy},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="tzNo != null">
+        tz_no = #{tzNo},
+      </if>
+      <if test="tetantId != null">
+        tetant_id = #{tetantId},
+      </if>
+      <if test="arriveTime != null">
+        arrive_time = #{arriveTime},
+      </if>
+      <if test="kNo != null">
+        k_no = #{kNo},
+      </if>
+      <if test="carId != null">
+        car_id = #{carId},
+      </if>
+      <if test="driverTel != null">
+        driver_tel = #{driverTel},
+      </if>
+      <if test="orderCategory != null">
+        order_category = #{orderCategory},
+      </if>
+      <if test="modifyBy != null">
+        modify_by = #{modifyBy},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime},
+      </if>
+    </trim>
+  </insert>
+</mapper>

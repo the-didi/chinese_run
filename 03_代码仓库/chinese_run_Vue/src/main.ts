@@ -4,7 +4,7 @@ import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 import router from './router';
 import { store, key } from './store';
-import mitt from 'mitt';
+// import mitt from 'mitt';
 import screenShort from 'vue-web-screen-shot';
 import '/@/theme/index.scss';
 import 'xe-utils'

@@ -70,4 +70,10 @@ public class Driver {
     @TableField(value = "lastUpdateTime")
     @ApiModelProperty(value = "创建时间")
     private Date lastUpdateTime;
+    /**
+     * 订单号
+     */
+    @TableField(value = "order_id")
+    @ApiModelProperty(value ="订单号")
+    private String orderId;
 }

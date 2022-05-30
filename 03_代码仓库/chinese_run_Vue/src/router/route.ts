@@ -55,6 +55,21 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				}
 			},
 			{
+				path:'/base/goods',
+				name: 'Goods',
+				component : () => import ('/@/views/base/goods/index.vue'),
+				meta:{
+					title : '商品'
+				}
+
+			},{
+				path: '/base/goods_details' ,
+				component : () => import('/@/views/base/goods_details/index.vue'),
+				meta:{
+					title: '商品明细'
+				}
+			},
+			{
 				path: '/menu',
 				name: 'Menu',
 				component: ()=>import('/@/views/system/menu/index.vue'),
@@ -75,7 +90,7 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				name: 'Role',
 				component: ()=>import('/@/views/system/role/index.vue'),
 				meta: {
-					title: '权限管理'
+					title: '角色管理'
 				}
 			},
 			{
@@ -92,6 +107,22 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				component: ()=>import("/@/views/system/driver/index.vue"),
 				meta:{
 					title: '司机管理'
+				}
+			},
+			{
+				path:'/Other',
+				name: 'Other storage',
+				component: ()=>import("/@/views/system/Otherstorage/index.vue"),
+				meta:{
+					title: '其它入库'
+				}
+			},
+			{
+				path:'/observe',
+				name: 'Order in',
+				component: ()=>import("/@/views/system/observe/index.vue"),
+				meta:{
+					title: '预约进货'
 				}
 			},
 			{
@@ -140,6 +171,19 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				component: ()=>import("/@/views/warehouse/cargospace/index.vue"),
 				meta: {
 					title: "货位配置"
+				}
+			},{
+				path:'/base/out',
+				component:()=>import('/@/views/exwarehouse/base/index.vue'),
+				meta:{
+					title:'一般出库'
+				}
+			},
+			{
+				path:'/other/out',
+				component:()=>import('/@/views/exwarehouse/other/index.vue'),
+				meta:{
+					title:'其他出库'
 				}
 			}
 		]

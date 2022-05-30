@@ -49,3 +49,9 @@ export function addDriver(params:Object){
             }
         })
     }
+    // 查询未派送订单
+    export function getOrderId(){
+        return request({
+            url:'/admin/order/getOrderId'
+        })
+    }
