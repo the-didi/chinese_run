@@ -174,7 +174,7 @@ export default defineComponent({
 	components: {
 		Icon,
 	},
-	setup(props, context) {
+	setup() {
 		const mainTable = ref({} as VxeTableInstance);
 		const state = reactive({
 			menuController: {

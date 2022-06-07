@@ -45,6 +45,15 @@ body,
 	flex-direction: column;
 	background: #fff;
 }
+.index-container {
+	min-height: 80vh;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+}
 // 按钮组模块样式抽离
 .btn-group{
 	margin-top: 15px;

@@ -185,6 +185,13 @@ export const staticRoutes: Array<RouteRecordRaw> = [
 				meta:{
 					title:'其他出库'
 				}
+			},
+			{
+				path: '/tenant',
+				component: ()=>import('/@/views/tenant/index.vue'),
+				meta: {
+					title: '租户管理'
+				}
 			}
 		]
 	}

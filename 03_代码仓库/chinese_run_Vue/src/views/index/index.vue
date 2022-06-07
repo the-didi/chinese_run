@@ -1,14 +1,13 @@
 <template>
-    <a-card class="activity-container">
+    <a-card class="index-container">
 
-        
-       <div id="customerChart"> </div>
+        <div style="display: flex;flex-direction: row;align-items: center;justify-content: center">
+          <div id="customerChart"> </div>
 
-       <div id="PieChart"></div>
+          <div id="PieChart"></div>
 
-      <div id="Goods"></div>
-        
-       
+          <div id="Goods"></div>
+        </div>
     </a-card>
 
 
@@ -19,6 +18,7 @@ import { defineComponent } from 'vue'
 import { onMounted } from "vue";
 import * as echarts from 'echarts'
 export default defineComponent({
+  name: "data_index",
     setup() {
            onMounted(() => { //需要获取到element,所以是onMounted的Hook
 
@@ -114,7 +114,7 @@ export default defineComponent({
 <style scoped>
  .activity-container >>> .ant-card-body{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
 }
